@@ -1,0 +1,6 @@
+{
+  "name": "Wiktrip - Travel, Adventure & Booking Platform",
+  "description": "Discover unforgettable journeys, wild adventures, luxury stays, treks, camping, permanent adventures, rentals, and gear with Wiktrip.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
