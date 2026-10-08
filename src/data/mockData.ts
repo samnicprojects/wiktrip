@@ -314,8 +314,9 @@ export const EVENTS_DATA: EventItem[] = [
     image: '/images/events/hornbill-festival-banner.jpg',
     gallery: [
       '/images/events/hornbill-festival-banner.jpg',
-      '/images/events/premium-tent.jpg',
-      '/images/events/dome-tent.jpg'
+      '/premium_tent.webp',
+      '/dom_tent.webp',
+      '/dom_tent1.webp'
     ],
     description: 'The Festival of Festivals! Same Vibes. Bigger Stage. Better Stays. Experience your comfort zone amidst nature at Wiktrip Campsite, just 1.2 km from the festival ground in Kisama Heritage Village.',
     lineup: ['17 Naga Tribal Troupes', 'Hornbill International Rock Contest Finalists', 'Folk Choral Ensembles', 'Acoustic Campfire Sessions'],
@@ -327,32 +328,55 @@ export const EVENTS_DATA: EventItem[] = [
     ],
     campingOptions: [
       {
-        type: 'Dome Tent',
-        description: '2 Person Occupancy with welcome breakfast. Special early bird offer till 31 Oct 2026. ₹2,600 /tent/day or ₹1,300 /person/day.',
-        capacity: '2 Persons',
-        amenities: ['Tent Lamp', 'Pillows', 'Comfortable Sleeping Mats', 'Warm Sleeping Bags / Blankets', 'Welcome Breakfast']
+        type: 'Premium Tent',
+        capacity: '4 Person Occupancy',
+        description: 'Spacious weatherproof cabin tent with extra headroom & comfort. Special early bird offer till 31 Oct 2026. ₹4,600 /tent/day or ₹1,400 /person/day with welcome breakfast.',
+        amenities: [
+          'Tent Lamp',
+          'Pillows',
+          'Comfortable Sleeping Mats',
+          'Warm Sleeping Bags / Blankets',
+          'Welcome Breakfast',
+          'Extra Headroom & Comfort'
+        ]
       },
       {
-        type: 'Premium Tent',
-        description: '4 Person Occupancy with welcome breakfast. Special early bird offer till 31 Oct 2026. ₹4,600 /tent/day or ₹1,400 /person/day.',
-        capacity: '4 Persons',
-        amenities: ['Tent Lamp', 'Pillows', 'Comfortable Sleeping Mats', 'Warm Sleeping Bags / Blankets', 'Welcome Breakfast', 'Extra Headroom']
+        type: 'Dome Tent',
+        capacity: '2 Person Occupancy',
+        description: 'Cozy waterproof dome tent pitched on scenic hilltop clearing. Special early bird offer till 31 Oct 2026. ₹2,600 /tent/day or ₹1,300 /person/day with welcome breakfast.',
+        amenities: [
+          'Tent Lamp',
+          'Pillows',
+          'Comfortable Sleeping Mats',
+          'Warm Sleeping Bags / Blankets',
+          'Welcome Breakfast',
+          'Waterproof Alpine Dome'
+        ]
       },
       {
         type: 'Pitch Your Own Tent',
-        description: 'Pitch your own tent slot at Wiktrip Campsite with full access to campsite facilities.',
-        capacity: 'Flexible',
-        amenities: ['Campsite Ground Access', 'Clean Washrooms', 'Multiple Charging Points', 'Campfire Access']
+        capacity: 'BYO Camper',
+        description: 'Pitch your own tent slot at Wiktrip Campsite with full access to washrooms, charging & food court. ₹999 /person/day.',
+        amenities: [
+          'Campground Pitch Ground Access',
+          'Clean Toilets & Washrooms',
+          'Bathroom Access',
+          'Multiple Charging Points',
+          'Food Court Access',
+          'Campfire Access'
+        ]
       }
     ],
     facilities: [
       'Food Court (Our Own Food Court - Good Food • Great People • Unforgettable Moments)',
-      'Cabs Available on Demand (from Dimapur at affordable rates)',
-      'Multiple Charging Points',
+      'Cabs available on demand (Shared or Private Cabs from Dimapur at affordable rates)',
+      'Multiple Charging Point',
       'Campfire',
-      'Toilets & Bathrooms',
-      'Ample Parking (4W & 2W)',
-      'First Aid & Safe Secured Campus',
+      'Toilets',
+      'Bathroom',
+      'Ample Parking Area for 4 wheeler & 2 wheeler',
+      'First Aid',
+      'Safe & Secured Campus',
       'Stunning Lake & Mountain Views'
     ],
     availablePasses: 120,
@@ -1077,7 +1101,7 @@ export const STORE_PRODUCTS_DATA: StoreProduct[] = [
     image: '/images/store/premium_tent.webp',
     gallery: [
       '/images/store/premium_tent.webp',
-      '/images/events/premium-tent.jpg'
+      '/premium_tent.jpg'
     ],
     description: 'A spacious two-layer tent designed for outdoor camping with weather protection, ventilation and practical interior features. Ideal for families and small expedition groups.',
     specs: {
@@ -1149,7 +1173,7 @@ export const STORE_PRODUCTS_DATA: StoreProduct[] = [
     gallery: [
       '/images/store/dom_tent.webp',
       '/images/store/dom_tent1.webp',
-      '/images/events/dome-tent.jpg'
+      '/dom.jpg'
     ],
     description: 'A compact waterproof and wind-resistant dome tent designed for small groups and outdoor adventures. Fast 5-minute setup with durable fiberglass poles.',
     specs: {

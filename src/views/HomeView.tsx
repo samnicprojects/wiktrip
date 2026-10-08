@@ -52,7 +52,12 @@ import {
   Utensils,
   Phone,
   MessageCircle,
-  Shield
+  Shield,
+  Lamp,
+  Bed,
+  Coffee,
+  Bath,
+  HeartPulse
 } from 'lucide-react';
 
 export const HomeView: React.FC = () => {
@@ -87,31 +92,44 @@ export const HomeView: React.FC = () => {
   // 7. UPCOMING EVENTS: Hornbill Music Festival Campsite Spotlight State
   const [hornbillTent, setHornbillTent] = useState<'premium' | 'dome' | 'pitch'>('premium');
   const [hornbillPricingMode, setHornbillPricingMode] = useState<'perTent' | 'perPerson'>('perTent');
+  const [domeViewIdx, setDomeViewIdx] = useState(0);
 
   const hornbillPackages = {
     premium: {
       id: 'premium',
       name: 'PREMIUM TENT',
-      occupancy: '4 People',
+      occupancy: '4 Person Occupancy',
       perTent: 4600,
       perPerson: 1400,
       badge: 'OFFER TILL 31 OCT 2026',
       tagline: 'Spacious weatherproof cabin tent with extra headroom & comfort',
-      features: ['Comfy Beds', 'Power Access', 'Good Ventilation'],
+      includes: [
+        'Tent Lamp',
+        'Pillows',
+        'Comfortable Sleeping Mats',
+        'Warm Sleeping Bags / Blankets',
+        'Welcome Breakfast'
+      ],
       includesBreakfast: true,
-      image: '/images/events/premium-tent.jpg'
+      image: '/premium_tent.webp'
     },
     dome: {
       id: 'dome',
       name: 'DOME TENT',
-      occupancy: '2 People',
+      occupancy: '2 Person Occupancy',
       perTent: 2600,
       perPerson: 1300,
       badge: 'OFFER TILL 31 OCT 2026',
       tagline: 'Cozy waterproof dome tent pitched on scenic hilltop clearing',
-      features: ['Comfortable Stay', 'Nature View', 'Campfire Zone'],
+      includes: [
+        'Tent Lamp',
+        'Pillows',
+        'Comfortable Sleeping Mats',
+        'Warm Sleeping Bags / Blankets',
+        'Welcome Breakfast'
+      ],
       includesBreakfast: true,
-      image: '/images/events/dome-tent.jpg'
+      image: '/dom_tent.webp'
     },
     pitch: {
       id: 'pitch',
@@ -121,25 +139,38 @@ export const HomeView: React.FC = () => {
       perPerson: 999,
       badge: 'BYO GEAR SPECIAL',
       tagline: 'Pitch your own tent with full access to washrooms, charging & food court',
-      features: ['Washrooms', 'Charging Points', 'Food Court'],
+      includes: [
+        'Campground Pitch Ground',
+        'Clean Toilets & Washrooms',
+        'Bathroom Access',
+        'Multiple Charging Points',
+        'Food Court Access'
+      ],
       includesBreakfast: false,
       image: '/images/events/pitch-tent.jpg'
     }
   };
 
-  const handleBookHornbillSlot = () => {
-    const pkg = hornbillPackages[hornbillTent];
-    const cost = hornbillTent === 'pitch' 
+  const handleBookHornbillSlot = (tentKey: 'premium' | 'dome' | 'pitch' = hornbillTent) => {
+    const pkg = hornbillPackages[tentKey];
+    const cost = tentKey === 'pitch' 
       ? pkg.perPerson 
       : (hornbillPricingMode === 'perTent' ? pkg.perTent : pkg.perPerson);
     
     openBooking({
       type: 'event',
-      id: `hornbill-campsite-${hornbillTent}`,
-      title: `The Hornbill Music Festival 2026 — Wiktrip Campsite (${pkg.name} - ${hornbillPricingMode === 'perTent' && hornbillTent !== 'pitch' ? 'Per Tent/Day' : 'Per Person/Day'})`,
+      id: `hornbill-campsite-${tentKey}`,
+      title: `The Hornbill Music Festival 2026 — Wiktrip Campsite (${pkg.name} - ${hornbillPricingMode === 'perTent' && tentKey !== 'pitch' ? '₹' + formatINR(pkg.perTent) + ' Per Tent/Day' : '₹' + formatINR(cost) + ' Per Person/Day'})`,
       location: 'Wiktrip Campsite, 1.2 km from Festival Ground, Kisama Heritage Village, Kohima, Nagaland',
       price: cost
     });
+  };
+
+  const handleOpenHornbillEventDetails = () => {
+    const event = EVENTS_DATA.find((e) => e.id === 'event-hornbill');
+    if (event) {
+      openDetail('event', event);
+    }
   };
 
   const handleHeroSearch = (e: React.FormEvent) => {
@@ -495,7 +526,7 @@ export const HomeView: React.FC = () => {
                 {/* CARD 1: PREMIUM TENT */}
                 <div className="bg-white rounded-3xl overflow-hidden border border-neutral-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                   <div>
-                    {/* Image with AI Photo + Badges */}
+                    {/* Image with Real Photo + Badges */}
                     <div className="relative h-48 w-full overflow-hidden bg-neutral-900">
                       <SafeImage
                         src={hornbillPackages.premium.image}
@@ -510,72 +541,108 @@ export const HomeView: React.FC = () => {
                       <div className="absolute top-3 right-3">
                         <span className="bg-[#0B0D0C]/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
                           <Users className="w-3 h-3" />
-                          <span>4 People</span>
+                          <span>4 Person Occupancy</span>
                         </span>
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <h5 className="font-display font-black text-lg text-[#0B0D0C]">
-                        PREMIUM TENT
-                      </h5>
+                      <div className="flex items-baseline justify-between">
+                        <h5 className="font-display font-black text-lg text-[#0B0D0C]">
+                          PREMIUM TENT
+                        </h5>
+                        <span className="text-[10px] font-extrabold text-[#556B2F] uppercase">
+                          4 Person
+                        </span>
+                      </div>
                       <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
                         Spacious weatherproof cabin tent with extra headroom & comfort
                       </p>
 
-                      {/* 3 Features with Icons matching image */}
-                      <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-neutral-100 text-center">
-                        <div className="flex flex-col items-center">
-                          <Tent className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Comfy Beds</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Zap className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Power Access</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Sparkles className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Good Ventilation</span>
+                      {/* OUR TENTS INCLUDE - Quick Checklist */}
+                      <div className="mt-4 pt-3.5 border-t border-neutral-100">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded block mb-2 w-fit">
+                          Our Tents Include
+                        </span>
+                        <div className="space-y-1.5 text-xs text-neutral-700">
+                          <div className="flex items-center gap-2">
+                            <Lamp className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Tent Lamp</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Bed className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Pillows</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Layers className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Comfortable Sleeping Mats</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Warm Sleeping Bags / Blankets</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-emerald-700 font-semibold pt-1">
+                            <Coffee className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="text-[11px]">Welcome Breakfast Included</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-5 pt-0">
-                    <div className="mb-3">
-                      <span className="text-[10px] font-bold uppercase text-neutral-500 block">
-                        {hornbillPricingMode === 'perTent' ? '₹4,600 /Tent/Day' : '₹1,400 /Person/Day'} (Inc. Breakfast)
-                      </span>
-                      <span className="font-display text-2xl font-black text-[#F97316]">
-                        ₹{formatINR(hornbillPricingMode === 'perTent' ? 4600 : 1400)}
-                      </span>
-                      <span className="text-xs text-neutral-500 ml-1">
-                        {hornbillPricingMode === 'perTent' ? '/day' : '/person/day'}
-                      </span>
+                    <div className="mb-3 p-3 bg-[#FAFBF8] rounded-2xl border border-neutral-200/80">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold uppercase text-neutral-500">
+                          {hornbillPricingMode === 'perTent' ? 'Per Tent / Day' : 'Per Person / Day'}
+                        </span>
+                        <span className="text-[10px] font-bold text-emerald-700">inc. breakfast</span>
+                      </div>
+                      <div className="flex items-baseline gap-1 mt-0.5">
+                        <span className="font-display text-2xl font-black text-[#F97316]">
+                          ₹{formatINR(hornbillPricingMode === 'perTent' ? 4600 : 1400)}
+                        </span>
+                        <span className="text-xs text-neutral-500">
+                          {hornbillPricingMode === 'perTent' ? '/tent/day' : '/person/day'}
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-neutral-500 mt-1 pt-1 border-t border-neutral-200/60 flex items-center justify-between">
+                        <span>₹4,600 /Tent</span>
+                        <span className="text-neutral-400 font-bold">OR</span>
+                        <span>₹1,400 /Person</span>
+                      </div>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setHornbillTent('premium');
-                        handleBookHornbillSlot();
-                      }}
-                      className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => {
+                          setHornbillTent('premium');
+                          handleBookHornbillSlot('premium');
+                        }}
+                        className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <span>Book This Tent</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={handleOpenHornbillEventDetails}
+                        className="w-full py-2 bg-neutral-100 hover:bg-neutral-200 text-[#0B0D0C] font-semibold text-xs rounded-xl transition-colors cursor-pointer text-center"
+                      >
+                        View Full Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 {/* CARD 2: DOME TENT */}
                 <div className="bg-white rounded-3xl overflow-hidden border border-neutral-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                   <div>
-                    {/* Image with AI Photo + Badges */}
-                    <div className="relative h-48 w-full overflow-hidden bg-neutral-900">
+                    {/* Image with Real Photos + View Switcher + Badges */}
+                    <div className="relative h-48 w-full overflow-hidden bg-neutral-900 group/img">
                       <SafeImage
-                        src={hornbillPackages.dome.image}
+                        src={domeViewIdx === 0 ? '/dom_tent.webp' : '/dom_tent1.webp'}
                         alt="Dome Tent"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-all duration-300"
                       />
                       <div className="absolute top-3 left-3">
                         <span className="bg-[#F97316] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
@@ -585,67 +652,119 @@ export const HomeView: React.FC = () => {
                       <div className="absolute top-3 right-3">
                         <span className="bg-[#0B0D0C]/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
                           <Users className="w-3 h-3" />
-                          <span>2 People</span>
+                          <span>2 Person Occupancy</span>
                         </span>
+                      </div>
+
+                      {/* Photo View Dots */}
+                      <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm">
+                        <button
+                          type="button"
+                          onClick={(e) => { e.stopPropagation(); setDomeViewIdx(0); }}
+                          className={`h-2 rounded-full transition-all cursor-pointer ${domeViewIdx === 0 ? 'bg-[#F97316] w-4' : 'bg-white/60 hover:bg-white w-2'}`}
+                          title="Pitched View"
+                        />
+                        <button
+                          type="button"
+                          onClick={(e) => { e.stopPropagation(); setDomeViewIdx(1); }}
+                          className={`h-2 rounded-full transition-all cursor-pointer ${domeViewIdx === 1 ? 'bg-[#F97316] w-4' : 'bg-white/60 hover:bg-white w-2'}`}
+                          title="Campsite View"
+                        />
                       </div>
                     </div>
 
                     <div className="p-5">
-                      <h5 className="font-display font-black text-lg text-[#0B0D0C]">
-                        DOME TENT
-                      </h5>
+                      <div className="flex items-baseline justify-between">
+                        <h5 className="font-display font-black text-lg text-[#0B0D0C]">
+                          DOME TENT
+                        </h5>
+                        <span className="text-[10px] font-extrabold text-[#556B2F] uppercase">
+                          2 Person
+                        </span>
+                      </div>
                       <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
                         Cozy waterproof dome tent pitched on scenic hilltop clearing
                       </p>
 
-                      {/* 3 Features with Icons matching image */}
-                      <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-neutral-100 text-center">
-                        <div className="flex flex-col items-center">
-                          <Tent className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Comfortable Stay</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Mountain className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Nature View</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Flame className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Campfire Zone</span>
+                      {/* OUR TENTS INCLUDE - Quick Checklist */}
+                      <div className="mt-4 pt-3.5 border-t border-neutral-100">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded block mb-2 w-fit">
+                          Our Tents Include
+                        </span>
+                        <div className="space-y-1.5 text-xs text-neutral-700">
+                          <div className="flex items-center gap-2">
+                            <Lamp className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Tent Lamp</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Bed className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Pillows</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Layers className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Comfortable Sleeping Mats</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Warm Sleeping Bags / Blankets</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-emerald-700 font-semibold pt-1">
+                            <Coffee className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="text-[11px]">Welcome Breakfast Included</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-5 pt-0">
-                    <div className="mb-3">
-                      <span className="text-[10px] font-bold uppercase text-neutral-500 block">
-                        {hornbillPricingMode === 'perTent' ? '₹2,600 /Tent/Day' : '₹1,300 /Person/Day'} (Inc. Breakfast)
-                      </span>
-                      <span className="font-display text-2xl font-black text-[#F97316]">
-                        ₹{formatINR(hornbillPricingMode === 'perTent' ? 2600 : 1300)}
-                      </span>
-                      <span className="text-xs text-neutral-500 ml-1">
-                        {hornbillPricingMode === 'perTent' ? '/day' : '/person/day'}
-                      </span>
+                    <div className="mb-3 p-3 bg-[#FAFBF8] rounded-2xl border border-neutral-200/80">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold uppercase text-neutral-500">
+                          {hornbillPricingMode === 'perTent' ? 'Per Tent / Day' : 'Per Person / Day'}
+                        </span>
+                        <span className="text-[10px] font-bold text-emerald-700">inc. breakfast</span>
+                      </div>
+                      <div className="flex items-baseline gap-1 mt-0.5">
+                        <span className="font-display text-2xl font-black text-[#F97316]">
+                          ₹{formatINR(hornbillPricingMode === 'perTent' ? 2600 : 1300)}
+                        </span>
+                        <span className="text-xs text-neutral-500">
+                          {hornbillPricingMode === 'perTent' ? '/tent/day' : '/person/day'}
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-neutral-500 mt-1 pt-1 border-t border-neutral-200/60 flex items-center justify-between">
+                        <span>₹2,600 /Tent</span>
+                        <span className="text-neutral-400 font-bold">OR</span>
+                        <span>₹1,300 /Person</span>
+                      </div>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setHornbillTent('dome');
-                        handleBookHornbillSlot();
-                      }}
-                      className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => {
+                          setHornbillTent('dome');
+                          handleBookHornbillSlot('dome');
+                        }}
+                        className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <span>Book This Tent</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={handleOpenHornbillEventDetails}
+                        className="w-full py-2 bg-neutral-100 hover:bg-neutral-200 text-[#0B0D0C] font-semibold text-xs rounded-xl transition-colors cursor-pointer text-center"
+                      >
+                        View Full Details
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 {/* CARD 3: PITCH YOUR OWN TENT */}
                 <div className="bg-white rounded-3xl overflow-hidden border border-neutral-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
                   <div>
-                    {/* Image with AI Photo + Badges */}
+                    {/* Image with Badges */}
                     <div className="relative h-48 w-full overflow-hidden bg-neutral-900">
                       <SafeImage
                         src={hornbillPackages.pitch.image}
@@ -666,52 +785,311 @@ export const HomeView: React.FC = () => {
                     </div>
 
                     <div className="p-5">
-                      <h5 className="font-display font-black text-lg text-[#0B0D0C]">
-                        PITCH YOUR OWN TENT
-                      </h5>
+                      <div className="flex items-baseline justify-between">
+                        <h5 className="font-display font-black text-lg text-[#0B0D0C]">
+                          PITCH YOUR OWN TENT
+                        </h5>
+                        <span className="text-[10px] font-extrabold text-[#556B2F] uppercase">
+                          BYO
+                        </span>
+                      </div>
                       <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
                         Pitch your own tent with full access to washrooms, charging & food court
                       </p>
 
-                      {/* 3 Features with Icons matching image */}
-                      <div className="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-neutral-100 text-center">
-                        <div className="flex flex-col items-center">
-                          <CheckCircle2 className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Washrooms</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Zap className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Charging Points</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <Utensils className="w-4 h-4 text-[#556B2F]" />
-                          <span className="text-[10px] font-bold text-neutral-700 mt-1">Food Court</span>
+                      {/* CAMPGROUND ACCESS INCLUDES */}
+                      <div className="mt-4 pt-3.5 border-t border-neutral-100">
+                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded block mb-2 w-fit">
+                          Campground Includes
+                        </span>
+                        <div className="space-y-1.5 text-xs text-neutral-700">
+                          <div className="flex items-center gap-2">
+                            <Tent className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Campground Pitch Slot</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Users className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Clean Toilets & Bathrooms</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Zap className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Multiple Charging Points</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Utensils className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Food Court Access</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Flame className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                            <span className="font-medium text-[11px]">Nightly Campfire Zone</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-5 pt-0">
-                    <div className="mb-3">
-                      <span className="text-[10px] font-bold uppercase text-neutral-500 block">
-                        Campground Slot
-                      </span>
-                      <span className="font-display text-2xl font-black text-[#F97316]">
-                        ₹999
-                      </span>
-                      <span className="text-xs text-neutral-500 ml-1">/Person/Day</span>
+                    <div className="mb-3 p-3 bg-[#FAFBF8] rounded-2xl border border-neutral-200/80">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-[10px] font-bold uppercase text-neutral-500">
+                          Campground Slot
+                        </span>
+                        <span className="text-[10px] font-bold text-neutral-600">BYO Tent</span>
+                      </div>
+                      <div className="flex items-baseline gap-1 mt-0.5">
+                        <span className="font-display text-2xl font-black text-[#F97316]">
+                          ₹999
+                        </span>
+                        <span className="text-xs text-neutral-500">/person/day</span>
+                      </div>
+                      <div className="text-[10px] text-neutral-500 mt-1 pt-1 border-t border-neutral-200/60">
+                        Full campsite amenities & washroom facilities access
+                      </div>
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setHornbillTent('pitch');
-                        handleBookHornbillSlot();
-                      }}
-                      className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <div className="space-y-2">
+                      <button
+                        onClick={() => {
+                          setHornbillTent('pitch');
+                          handleBookHornbillSlot('pitch');
+                        }}
+                        className="w-full py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-xs rounded-xl transition-colors shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <span>Book Pitch Slot</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={handleOpenHornbillEventDetails}
+                        className="w-full py-2 bg-neutral-100 hover:bg-neutral-200 text-[#0B0D0C] font-semibold text-xs rounded-xl transition-colors cursor-pointer text-center"
+                      >
+                        View Full Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* =========================================================
+                OUR TENTS INCLUDE (Exact Section from Official Flyer)
+                ========================================================= */}
+            <div className="mt-12 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-neutral-200/90 shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 gap-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#F97316]" />
+                    <span className="text-xs uppercase font-extrabold tracking-widest text-[#556B2F]">
+                      HORNBLIPP CAMPSITE GEAR
+                    </span>
+                  </div>
+                  <h4 className="font-display text-2xl sm:text-3xl font-black text-[#0B0D0C] mt-1">
+                    OUR TENTS INCLUDE
+                  </h4>
+                  <p className="text-xs text-neutral-500 mt-0.5">
+                    Every Wiktrip tent comes pre-equipped so you don&apos;t need to carry heavy gear to Nagaland.
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-800 text-xs font-bold rounded-xl border border-emerald-200 shrink-0 shadow-sm">
+                  <Coffee className="w-4 h-4 text-emerald-600" />
+                  <span>Complimentary Welcome Breakfast!</span>
+                </div>
+              </div>
+
+              {/* 4 Inclusions Cards with Flyer Golden Styling */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
+                <div className="bg-[#FAFBF8] rounded-2xl p-5 border border-neutral-200/80 text-center flex flex-col items-center hover:border-amber-400 hover:shadow-md transition-all">
+                  <div className="w-14 h-14 rounded-full bg-[#0B0D0C] text-[#FBBF24] flex items-center justify-center shadow-md mb-3 ring-4 ring-amber-400/20">
+                    <Lamp className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-[#0B0D0C]">Tent Lamp</span>
+                  <span className="text-[11px] text-neutral-500 mt-1.5 leading-snug">
+                    Personal in-tent camp lantern for late festival nights
+                  </span>
+                </div>
+
+                <div className="bg-[#FAFBF8] rounded-2xl p-5 border border-neutral-200/80 text-center flex flex-col items-center hover:border-amber-400 hover:shadow-md transition-all">
+                  <div className="w-14 h-14 rounded-full bg-[#0B0D0C] text-[#FBBF24] flex items-center justify-center shadow-md mb-3 ring-4 ring-amber-400/20">
+                    <Bed className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-[#0B0D0C]">Pillows</span>
+                  <span className="text-[11px] text-neutral-500 mt-1.5 leading-snug">
+                    Clean, plush travel sleeping pillows for peaceful mountain sleep
+                  </span>
+                </div>
+
+                <div className="bg-[#FAFBF8] rounded-2xl p-5 border border-neutral-200/80 text-center flex flex-col items-center hover:border-amber-400 hover:shadow-md transition-all">
+                  <div className="w-14 h-14 rounded-full bg-[#0B0D0C] text-[#FBBF24] flex items-center justify-center shadow-md mb-3 ring-4 ring-amber-400/20">
+                    <Layers className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-[#0B0D0C]">Comfortable Sleeping Mats</span>
+                  <span className="text-[11px] text-neutral-500 mt-1.5 leading-snug">
+                    Thick insulated ground foam mats blocking mountain chill
+                  </span>
+                </div>
+
+                <div className="bg-[#FAFBF8] rounded-2xl p-5 border border-neutral-200/80 text-center flex flex-col items-center hover:border-amber-400 hover:shadow-md transition-all">
+                  <div className="w-14 h-14 rounded-full bg-[#0B0D0C] text-[#FBBF24] flex items-center justify-center shadow-md mb-3 ring-4 ring-amber-400/20">
+                    <Sparkles className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-black text-[#0B0D0C]">Warm Sleeping Bags / Blankets</span>
+                  <span className="text-[11px] text-neutral-500 mt-1.5 leading-snug">
+                    Sub-zero thermal mountain-rated sleeping bags & warm quilts
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* =========================================================
+                CAMPSITE AMENITIES (8 Badges from Official Flyer)
+                ========================================================= */}
+            <div className="mt-8 bg-[#0B0D0C] text-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/10 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#556B2F]/15 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F97316]/10 rounded-full blur-[100px] pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="text-center max-w-2xl mx-auto mb-8">
+                  <span className="text-xs uppercase font-extrabold tracking-widest text-[#F97316] block">
+                    CAMP • EXPLORE • EXPERIENCE
+                  </span>
+                  <h4 className="font-display text-2xl sm:text-3xl font-black text-white mt-1">
+                    CAMPSITE AMENITIES
+                  </h4>
+                  <p className="text-xs text-neutral-400 mt-2">
+                    Everything you need to enjoy the Hornbill Music Festival in total comfort & security.
+                  </p>
+                </div>
+
+                {/* 8 Badges Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                  {/* 1. Food Court */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Utensils className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Food Court</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Our own dedicated campground food court</span>
+                  </div>
+
+                  {/* 2. Cabs available on demand */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Car className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Cabs available on demand</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Shared or private cabs from Dimapur</span>
+                  </div>
+
+                  {/* 3. Multiple Charging Point */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Multiple Charging Point</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Multi-plug device charging stations</span>
+                  </div>
+
+                  {/* 4. Campfire */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Flame className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Campfire</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Nightly bonfires & acoustic music jam</span>
+                  </div>
+
+                  {/* 5. Toilets */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Users className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Toilets</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Clean & sanitized separate units</span>
+                  </div>
+
+                  {/* 6. Bathroom */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <Bath className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">Bathroom</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">Fresh running water bathing stalls</span>
+                  </div>
+
+                  {/* 7. Ample Parking Area */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <span className="font-black text-sm">P</span>
+                    </div>
+                    <span className="text-xs font-bold text-white">Ample Parking Area</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">For 4 wheeler & 2 wheeler vehicles</span>
+                  </div>
+
+                  {/* 8. First Aid */}
+                  <div className="bg-white/5 hover:bg-white/10 p-4 rounded-2xl border border-white/10 text-center flex flex-col items-center transition-all group">
+                    <div className="w-12 h-12 rounded-full bg-[#242625] border-2 border-amber-400/60 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
+                      <HeartPulse className="w-5 h-5" />
+                    </div>
+                    <span className="text-xs font-bold text-white">First Aid</span>
+                    <span className="text-[10px] text-neutral-400 mt-1">24/7 emergency medical kit on-site</span>
+                  </div>
+                </div>
+
+                {/* Two Highlight Callout Cards from the Flyer */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-8 border-t border-white/10">
+                  {/* Food Court Banner Card */}
+                  <div className="bg-gradient-to-r from-amber-950/40 to-[#161917] p-5 rounded-2xl border border-amber-500/30 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                      <Utensils className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider block">
+                        Our Own
+                      </span>
+                      <h5 className="font-display font-black text-white text-base">
+                        FOOD COURT
+                      </h5>
+                      <p className="text-xs text-neutral-300 mt-0.5 italic">
+                        Good Food • Great People • Unforgettable Moments
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Dimapur Cabs Banner Card */}
+                  <div className="bg-gradient-to-r from-emerald-950/40 to-[#161917] p-5 rounded-2xl border border-emerald-500/30 flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                      <Car className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-emerald-400 tracking-wider block">
+                        Direct Transfers
+                      </span>
+                      <h5 className="font-display font-black text-white text-base">
+                        Cabs from Dimapur on Demand
+                      </h5>
+                      <p className="text-xs text-neutral-300 mt-0.5">
+                        Shared or Private Cabs available on demand from Dimapur at affordable rates.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Trust & Location Banner Strip from Flyer */}
+                <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-neutral-300">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#F97316] shrink-0" />
+                    <span>
+                      <strong className="text-white">Wiktrip Campsite:</strong> 1.2 km from Festival Ground, Kisama Heritage Village, Kohima, Nagaland
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+                      <ShieldCheck className="w-4 h-4" />
+                      Safe & Secured Campus
+                    </span>
+                    <span className="flex items-center gap-1.5 text-amber-400 font-medium">
+                      <Mountain className="w-4 h-4" />
+                      Stunning Lake & Mountain Views
+                    </span>
                   </div>
                 </div>
               </div>

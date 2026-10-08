@@ -20,7 +20,11 @@ import {
   Fuel,
   Send,
   MessageSquare,
-  Tent
+  Tent,
+  Coffee,
+  Utensils,
+  Zap,
+  Flame
 } from 'lucide-react';
 
 export const DetailModal: React.FC = () => {
@@ -553,43 +557,111 @@ export const DetailModal: React.FC = () => {
                 )}
 
                 {/* Wiktrip Campsite & Tent Pitching Details */}
-                <div className="p-4 bg-[#556B2F]/15 border border-[#556B2F]/30 rounded-2xl space-y-3">
-                  <div className="flex items-center gap-2 text-white font-bold text-sm">
-                    <Tent className="w-4 h-4 text-[#F97316]" />
-                    <span>Wiktrip Campsite & Tent Pitching Stays</span>
+                {/* Wiktrip Campsite & Tent Pitching Details */}
+                <div className="p-5 bg-[#556B2F]/15 border border-[#556B2F]/30 rounded-2xl space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-2 text-white font-bold text-sm">
+                      <Tent className="w-4 h-4 text-[#F97316]" />
+                      <span>Wiktrip Campsite & Tent Pitching Stays</span>
+                    </div>
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 bg-[#F97316] text-white rounded-full tracking-wider w-fit">
+                      1.2 km from Festival Ground
+                    </span>
                   </div>
+
                   <p className="text-xs text-neutral-300 leading-relaxed">
-                    Wiktrip sets up verified campsite accommodation and pitched tents directly at this festival. Festival entry passes must be obtained separately from the official festival organizers.
+                    Same Vibes. Bigger Stage. Better Stays. Your comfort zone amidst nature at Kisama Heritage Village, Kohima, Nagaland. Pre-equipped tents with welcome breakfast and full campsite access.
                   </p>
+
+                  {/* OUR TENTS INCLUDE Banner */}
+                  <div className="p-3.5 bg-[#0B0D0C]/80 rounded-xl border border-white/10">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">
+                        Our Tents Include
+                      </span>
+                      <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                        <Coffee className="w-3 h-3" />
+                        <span>Welcome Breakfast Included</span>
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] text-neutral-200">
+                      <div className="flex items-center gap-1.5 p-1.5 bg-white/5 rounded-lg">
+                        <span className="text-amber-400 font-bold">🏮</span>
+                        <span>Tent Lamp</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 p-1.5 bg-white/5 rounded-lg">
+                        <span className="text-amber-400 font-bold">🛏️</span>
+                        <span>Pillows</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 p-1.5 bg-white/5 rounded-lg">
+                        <span className="text-amber-400 font-bold">🟨</span>
+                        <span>Sleeping Mats</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 p-1.5 bg-white/5 rounded-lg">
+                        <span className="text-amber-400 font-bold">🛌</span>
+                        <span>Sleeping Bags</span>
+                      </div>
+                    </div>
+                  </div>
+
                   {item.campingOptions && item.campingOptions.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                      {item.campingOptions.map((opt: any, idx: number) => (
-                        <div key={idx} className="p-3 bg-[#242625] rounded-xl border border-white/5">
-                          <div className="text-xs font-bold text-white flex items-center justify-between">
-                            <span>⛺ {opt.type}</span>
-                            <span className="text-[10px] text-neutral-400">{opt.capacity}</span>
-                          </div>
-                          <p className="text-[11px] text-neutral-400 mt-1 leading-relaxed">{opt.description}</p>
-                          {opt.amenities && (
-                            <div className="flex flex-wrap gap-1 mt-2">
-                              {opt.amenities.map((am: string, aIdx: number) => (
-                                <span key={aIdx} className="text-[10px] bg-white/5 text-neutral-300 px-2 py-0.5 rounded">
-                                  {am}
+                    <div className="space-y-3">
+                      <div className="text-[11px] font-bold text-white uppercase tracking-wider">
+                        Available Tent Configurations:
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {item.campingOptions.map((opt: any, idx: number) => (
+                          <div key={idx} className="p-3.5 bg-[#161917] rounded-xl border border-white/10 flex flex-col justify-between">
+                            <div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs font-bold text-white">⛺ {opt.type}</span>
+                                <span className="text-[10px] font-extrabold text-[#556B2F] bg-[#556B2F]/20 px-2 py-0.5 rounded">
+                                  {opt.capacity}
                                 </span>
-                              ))}
+                              </div>
+                              <p className="text-[11px] text-neutral-400 mt-1.5 leading-relaxed">
+                                {opt.description}
+                              </p>
+                              {opt.amenities && (
+                                <div className="flex flex-wrap gap-1 mt-2.5">
+                                  {opt.amenities.map((am: string, aIdx: number) => (
+                                    <span key={aIdx} className="text-[9px] bg-white/5 text-neutral-300 px-1.5 py-0.5 rounded">
+                                      ✓ {am}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
                             </div>
-                          )}
-                        </div>
-                      ))}
+                            <button
+                              onClick={() => {
+                                closeDetail();
+                                openBooking({
+                                  type: 'event',
+                                  id: `hornbill-campsite-${opt.type.toLowerCase().includes('premium') ? 'premium' : opt.type.toLowerCase().includes('dome') ? 'dome' : 'pitch'}`,
+                                  title: `The Hornbill Music Festival 2026 — Wiktrip Campsite (${opt.type})`,
+                                  location: 'Wiktrip Campsite, Kisama Heritage Village, Kohima',
+                                  price: opt.type.toLowerCase().includes('pitch') ? 999 : opt.type.toLowerCase().includes('dome') ? 2600 : 4600
+                                });
+                              }}
+                              className="mt-3 w-full py-1.5 bg-[#F97316] hover:bg-[#EA580C] text-white rounded text-[11px] font-bold transition-colors cursor-pointer text-center"
+                            >
+                              Book {opt.type}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
+
                   {item.facilities && (
-                    <div className="pt-2 border-t border-white/10">
-                      <div className="text-[11px] font-semibold text-neutral-400 mb-1.5">Campground Amenities & Facilities:</div>
+                    <div className="pt-3 border-t border-white/10">
+                      <div className="text-[11px] font-bold text-white uppercase tracking-wider mb-2">
+                        Campsite Amenities:
+                      </div>
                       <div className="flex flex-wrap gap-1.5">
                         {item.facilities.map((fac: string, idx: number) => (
-                          <span key={idx} className="text-[10px] bg-[#242625] text-neutral-300 px-2.5 py-1 rounded border border-white/5">
-                            ✓ {fac}
+                          <span key={idx} className="text-[10px] bg-[#161917] text-neutral-200 px-2.5 py-1 rounded-lg border border-white/10 flex items-center gap-1">
+                            <span className="text-amber-400">✓</span> {fac}
                           </span>
                         ))}
                       </div>

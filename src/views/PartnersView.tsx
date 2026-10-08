@@ -166,7 +166,7 @@ export const PartnersView: React.FC = () => {
                     type="tel"
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value)}
-                    placeholder="+91 9876543210"
+                    placeholder="+91 9711720218"
                     required
                     className="w-full bg-[#F3F4F0] border border-neutral-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-[#556B2F]"
                   />

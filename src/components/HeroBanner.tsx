@@ -37,6 +37,26 @@ export const HeroBanner: React.FC = () => {
           });
         }
       }
+    },
+    {
+      id: 'banner-hornbill-campsite',
+      src: '/banner2.png',
+      alt: 'The Hornbill Music Festival 2026 - Explore Wiktrip Campsite',
+      title: 'Explore Wiktrip Campsite 2026',
+      linkAction: () => {
+        const el = document.getElementById('hornbill-stays');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          openBooking({
+            type: 'event',
+            id: 'event-hornbill',
+            title: 'The Hornbill Music Festival 2026 Wiktrip Campsite',
+            location: 'Kohima, Nagaland',
+            price: 999
+          });
+        }
+      }
     }
   ];
 
@@ -114,9 +134,8 @@ export const HeroBanner: React.FC = () => {
                     e.stopPropagation();
                     setCurrentSlide(idx);
                   }}
-                  className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                    idx === currentSlide ? 'w-8 bg-[#F97316]' : 'w-2.5 bg-white/60 hover:bg-white'
-                  }`}
+                  className={`h-2.5 rounded-full transition-all cursor-pointer ${idx === currentSlide ? 'w-8 bg-[#F97316]' : 'w-2.5 bg-white/60 hover:bg-white'
+                    }`}
                 />
               ))}
             </div>

@@ -199,11 +199,31 @@ export const BookingModal: React.FC = () => {
               </div>
 
               {bookingItem.type === 'event' && (
-                <div className="p-3.5 bg-[#556B2F]/15 border border-[#556B2F]/30 rounded-xl text-xs text-neutral-300 flex items-start gap-2.5">
-                  <span className="text-[#F97316] text-base leading-none">⛺</span>
-                  <div>
-                    <span className="font-semibold text-white">Wiktrip Campsite Stay: </span>
-                    We pitch dome tents, luxury alpine tents, and provide campground hospitality at this festival venue. Event passes should be procured directly from the festival organisers.
+                <div className="p-4 bg-[#556B2F]/15 border border-[#556B2F]/30 rounded-2xl text-xs text-neutral-300 space-y-2.5">
+                  <div className="flex items-start gap-2.5">
+                    <span className="text-[#F97316] text-lg leading-none">⛺</span>
+                    <div>
+                      <span className="font-bold text-white">Wiktrip Campsite Stay: </span>
+                      Pre-pitched tents & campground hospitality at Kisama Heritage Village, Kohima (1.2 km from Festival Ground).
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-white/10 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px]">
+                    <span className="font-bold text-amber-400">Our Tents Include:</span>
+                    <span>🏮 Tent Lamp</span>
+                    <span>🛏️ Pillows</span>
+                    <span>🟨 Comfortable Sleeping Mats</span>
+                    <span>🛌 Warm Sleeping Bags</span>
+                    <span className="text-emerald-400 font-semibold">☕ Welcome Breakfast</span>
+                  </div>
+                  <div className="text-[10px] text-neutral-400 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                    <span className="font-semibold text-neutral-300">Campsite Amenities:</span>
+                    <span>✓ Food Court</span>
+                    <span>✓ Cabs on Demand</span>
+                    <span>✓ Charging Points</span>
+                    <span>✓ Campfire</span>
+                    <span>✓ Toilets & Bathrooms</span>
+                    <span>✓ Parking</span>
+                    <span>✓ First Aid</span>
                   </div>
                 </div>
               )}
@@ -350,7 +370,7 @@ export const BookingModal: React.FC = () => {
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
                       required
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 9711720218"
                       className="w-full bg-[#242625] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#556B2F]"
                     />
                   </div>

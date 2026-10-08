@@ -65,11 +65,11 @@ export const FloatingEnquiryBar: React.FC = () => {
             </button>
 
             <a
-              href="tel:+919876543210"
+              href="tel:+919711720218"
               className="w-full py-2 px-3 bg-[#242625] hover:bg-[#323634] text-neutral-200 rounded-xl text-xs font-medium flex items-center justify-center gap-2 transition-colors"
             >
               <PhoneCall className="w-3.5 h-3.5 text-[#556B2F]" />
-              <span>Call Helpline: +91 98765 43210</span>
+              <span>Call Helpline: +91 9711720218</span>
             </a>
           </div>
 

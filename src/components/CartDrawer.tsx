@@ -21,7 +21,7 @@ export const CartDrawer: React.FC = () => {
   const handleEnquirySubmit = () => {
     const itemList = cartItems.map(i => `${i.product.name} (Qty: ${i.quantity})`).join(', ');
     const waText = encodeURIComponent(`Hi Wiktrip, I want to enquire about purchasing/renting gear: ${itemList}. Estimated value: ₹${formatINR(cartTotal)}. Please confirm availability & sizes!`);
-    window.open(`https://wa.me/919876543210?text=${waText}`, '_blank');
+    window.open(`https://wa.me/919711720218?text=${waText}`, '_blank');
     showToast('Gear enquiry created! Opening WhatsApp to connect with our gear specialist.');
     clearCart();
     setIsCartOpen(false);

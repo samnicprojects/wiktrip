@@ -172,7 +172,7 @@ export const UserAccountModal: React.FC = () => {
 
                     <div className="flex items-center justify-end gap-2 pt-2">
                       <a
-                        href={`https://wa.me/919876543210?text=Hi%20Wiktrip%2C%20following%20up%20on%20my%20enquiry%20Ref%3A%20${bk.bookingRef}`}
+                        href={`https://wa.me/919711720218?text=Hi%20Wiktrip%2C%20following%20up%20on%20my%20enquiry%20Ref%3A%20${bk.bookingRef}`}
                         target="_blank"
                         rel="noreferrer"
                         className="px-3 py-1.5 bg-[#25D366] hover:bg-[#1ebd5a] text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-colors"
@@ -216,7 +216,7 @@ export const UserAccountModal: React.FC = () => {
                   <label className="block text-xs text-neutral-400 mb-1">Phone / WhatsApp</label>
                   <input
                     type="tel"
-                    defaultValue="+91 98765 43210"
+                    defaultValue="+91 9711720218"
                     className="w-full bg-[#242625] border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none"
                   />
                 </div>

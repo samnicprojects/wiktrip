@@ -808,7 +808,7 @@ export const AdventureSetupView: React.FC = () => {
     const text = encodeURIComponent(
       `Hello Wiktrip, I want to discuss building an Adventure Destination on my land/resort. Location: ${formLocation || 'India'}.`
     );
-    window.open(`https://wa.me/919999999999?text=${text}`, '_blank');
+    window.open(`https://wa.me/919711720218?text=${text}`, '_blank');
   };
 
   return (
@@ -1605,11 +1605,11 @@ export const AdventureSetupView: React.FC = () => {
                     <span>WhatsApp Us</span>
                   </button>
                   <a
-                    href="tel:+919999999999"
+                    href="tel:+919711720218"
                     className="inline-flex items-center gap-2 px-5 py-3 bg-white hover:bg-neutral-100 text-[#0B0D0C] text-xs font-bold rounded-2xl border border-neutral-300 transition-colors cursor-pointer"
                   >
                     <Phone className="w-4 h-4 text-[#F97316]" />
-                    <span>+91 99999 99999</span>
+                    <span>+91 9711720218</span>
                   </a>
                 </div>
               </div>
@@ -1670,7 +1670,7 @@ export const AdventureSetupView: React.FC = () => {
                           required
                           value={formPhone}
                           onChange={(e) => setFormPhone(e.target.value)}
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 9711720218"
                           className="w-full bg-[#F8F9F6] border border-neutral-200 rounded-xl px-3.5 py-3 text-xs focus:outline-none focus:border-[#556B2F]"
                         />
                       </div>

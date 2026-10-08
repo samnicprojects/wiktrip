@@ -99,7 +99,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       guests: 2,
       customerName: 'Aarav Sharma',
       customerEmail: 'aarav.sharma@example.com',
-      customerPhone: '+91 98765 43210',
+      customerPhone: '+91 9711720218',
       preferredContactMethod: 'WhatsApp',
       budgetPreference: 'Comfort / Standard',
       customNotes: 'Interested in vegetarian hot meals and private tent on Day 3 if possible.',
