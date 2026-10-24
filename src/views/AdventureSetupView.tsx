@@ -47,131 +47,166 @@ interface SetupSpec {
   spaceRequired: string;
   installationTime: string;
   image: string;
+  popular?: boolean;
+  keyComponents?: string;
+  siteNote?: string;
   highlightSpecs?: { [key: string]: string };
 }
 
-// 5 Main Featured Setups
+// 6 Signature Flagship Architectural Setups
 const FEATURED_SETUPS: SetupSpec[] = [
   {
-    id: 'setup-zipline',
+    id: 'setup-1-zipline',
     name: 'ZIPLINE',
     category: 'Aerial Adventures',
     categoryKey: 'aerial',
-    tagline: 'Fly. Feel the Rush.',
+    popular: true,
+    tagline: 'Glide Across Open Landscapes',
     description:
-      'Create an exciting aerial attraction with zipline configurations for different age groups and locations. Engineered with military-grade redundant cables and eddy-current magnetic braking.',
+      'Glide across open landscapes on an exciting zipline experience, designed for different site layouts and rider requirements.',
     tags: ['Outdoor', 'Extreme', 'Family'],
     indicativeBudget: '₹6–26 Lakh',
-    spaceRequired: '240–1,500 sq m',
+    spaceRequired: '240–1,500 m²',
     installationTime: '6–12 Weeks',
     image: '/images/adventure/aerial.jpg',
+    keyComponents: 'Support structure, wire and braking systems',
     highlightSpecs: {
-      'Setup Range': '50–300 m span',
-      'Space Required': '240–1,500 sq m',
+      'Size / Span': '50–300 m on flat ground',
+      'Footprint Area': '240–1,500 m²',
       'Indicative Budget': '₹6–26 Lakh',
-      'Installation': '6–12 Weeks'
+      'Installation': '6–12 Weeks',
+      'Key Components': 'Support structure, wire and braking systems'
     }
   },
   {
-    id: 'setup-bungee',
-    name: 'BUNGEE JUMP',
+    id: 'setup-10-bungee-jumping',
+    name: 'BUNGEE JUMPING',
     category: 'Extreme Thrills',
     categoryKey: 'extreme',
-    tagline: 'Take Adventure to New Heights',
+    popular: true,
+    tagline: 'Major High-Impact Destination Attraction',
     description:
-      'A high-adrenaline attraction designed for adventure destinations and mountain locations. Built to international EN/ASTM standards with multiple safety redundancies.',
+      'Build a major adventure attraction for destinations seeking a high-impact, specialist-operated experience.',
     tags: ['Outdoor', 'Extreme'],
     indicativeBudget: '₹100–180 Lakh',
-    spaceRequired: '600–1,200 sq m',
+    spaceRequired: '600–1,200 m²',
     installationTime: '24–36 Weeks',
     image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Support structure, lift system and cords',
     highlightSpecs: {
-      'Jump Height': '40–70 m (up to 200 m mountain)',
-      'Space Required': '600–1,200 sq m',
+      'Drop Height': '40–70 m flat ground; up to 200 m in mountains',
+      'Footprint Area': '600–1,200 m²',
       'Indicative Budget': '₹100–180 Lakh',
-      'Installation': '24–36 Weeks'
+      'Installation': '24–36 Weeks',
+      'Key Components': 'Support structure, lift system and cords'
     }
   },
   {
-    id: 'setup-ropes',
+    id: 'setup-16-high-ropes-course',
     name: 'HIGH ROPES COURSE',
     category: 'Climbing & Ropes',
     categoryKey: 'climbing',
-    tagline: 'Challenge. Climb. Conquer.',
+    popular: true,
+    tagline: 'Elevated Obstacle, Movement & Balance Challenge',
     description:
-      'A multi-element adventure course designed for active visitors, groups, team bonding and institutional adventure hubs. Configurable from 8 to 40 challenging obstacles.',
-    tags: ['Outdoor', 'Family', 'Kids'],
+      'Develop an elevated obstacle experience combining balance, movement and rope-based challenges.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
     indicativeBudget: '₹14–70 Lakh',
-    spaceRequired: '300–1,200 sq m',
+    spaceRequired: '300–1,200 m²',
     installationTime: '6–22 Weeks',
     image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Structure, elements and belay system',
     highlightSpecs: {
-      'Obstacle Elements': '8–40 Elements',
-      'Space Required': '300–1,200 sq m',
+      'Challenge Elements': '8–40 Elements',
+      'Footprint Area': '300–1,200 m²',
       'Indicative Budget': '₹14–70 Lakh',
-      'Installation': '6–22 Weeks'
+      'Installation': '6–22 Weeks',
+      'Key Components': 'Structure, elements and belay system'
     }
   },
   {
-    id: 'setup-gokart',
-    name: 'GO-KART ARENA',
+    id: 'setup-20-go-kart-arena',
+    name: 'GO KART ARENA',
     category: 'Motorsport & Racing',
     categoryKey: 'motorsport',
-    tagline: 'Speed Meets Competition',
+    popular: true,
+    tagline: 'Dedicated Racing Circuit & Safety Barrier System',
     description:
-      'Build an indoor or outdoor karting experience with dedicated tracks, high-traction asphalt, telemetry timing systems and impact-absorbing barrier safety infrastructure.',
+      'Build a dedicated karting destination with a planned circuit, vehicles and safety barriers.',
     tags: ['Outdoor', 'Indoor', 'Family'],
     indicativeBudget: '₹40–190 Lakh',
-    spaceRequired: '1,800–12,000 sq m',
+    spaceRequired: 'Indoor 1,800–5,000 m² · Outdoor 2,000–12,000 m²',
     installationTime: '16–36 Weeks',
     image: '/images/adventure/motorsport.jpg',
+    keyComponents: 'Track, karts and safety barrier',
     highlightSpecs: {
-      'Track Length': '200–1,000 m circuit',
-      'Space Required': '1,800–12,000 sq m',
+      'Track Length': 'Indoor: 200–400 m · Outdoor: 200–1,000 m',
+      'Footprint Area': 'Indoor: 1,800–5,000 m² · Outdoor: 2,000–12,000 m²',
       'Indicative Budget': '₹40–190 Lakh',
-      'Installation': '16–36 Weeks'
+      'Installation': '16–36 Weeks',
+      'Key Components': 'Track, karts and safety barrier'
     }
   },
   {
-    id: 'setup-camping',
-    name: 'ADVENTURE CAMPING',
-    category: 'Nature & Outdoor',
-    categoryKey: 'nature',
-    tagline: 'Stay Close to Nature',
+    id: 'setup-11-glass-bridge-sky-walk',
+    name: 'GLASS BRIDGE / SKY WALK',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    popular: true,
+    tagline: 'Dramatic Elevated Transparent Viewing Deck',
     description:
-      'Create comfortable outdoor accommodation using a range of tent concepts including Alpine tents, Swiss Cottage setups and Geodesic Glamping Domes.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹1 Lakh onwards',
-    spaceRequired: '300–1,200 sq m',
-    installationTime: '1–12 Weeks',
-    image: '/images/adventure/nature.jpg',
+      'Create a dramatic elevated viewing experience with a glass walking surface and engineered support system.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹15–220 Lakh',
+    spaceRequired: '80–800 m²',
+    installationTime: '6–40 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    siteNote: 'Possible integration with an existing bungee tower or mountain site.',
+    keyComponents: 'Support structure, laminated glass panels and safety railings',
     highlightSpecs: {
-      'Tent Concepts': 'Alpine • Swiss Cottage • Geodesic Dome',
-      'Space Required': '300–1,200 sq m',
-      'Indicative Budget': '₹1 Lakh onwards',
-      'Installation': '1–12 Weeks'
+      'Bridge Surface Size': '30–200 m²',
+      'Footprint Area': '80–800 m²',
+      'Indicative Budget': '₹15–220 Lakh',
+      'Installation': '6–40 Weeks',
+      'Site Note': 'Possible integration with existing bungee tower or mountain site'
+    }
+  },
+  {
+    id: 'setup-2-roller-coaster-zipline',
+    name: 'ROLLER COASTER ZIPLINE',
+    category: 'Aerial Adventures',
+    categoryKey: 'aerial',
+    tagline: 'Curved Rail Continuous Thrill Ride',
+    description:
+      'Combine the thrill of a zipline with a curved rail-based ride for a distinctive adventure attraction.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹16–120 Lakh',
+    spaceRequired: '300–1,200 m²',
+    installationTime: '12–24 Weeks',
+    image: '/images/adventure/aerial.jpg',
+    keyComponents: 'Support structure, rail system and pulley',
+    highlightSpecs: {
+      'Track Length': '100–500 m on flat ground',
+      'Footprint Area': '300–1,200 m²',
+      'Indicative Budget': '₹16–120 Lakh',
+      'Installation': '12–24 Weeks',
+      'Key Components': 'Support structure, rail system and pulley'
     }
   }
 ];
 
-// The 10 Adventure Categories with curated specifications & attractions
+// Adventure Categories mapping to the 26 Setups
 const ADVENTURE_CATEGORIES = [
   {
     key: 'aerial',
     icon: Zap,
     name: 'Aerial Adventures',
-    subtitle: 'Experience the thrill of height, speed and open skies.',
-    cta: 'Explore Aerial Adventures',
+    subtitle: 'Glide through open landscapes on gravity & rail systems.',
+    cta: 'Explore Aerial Setups',
     image: '/images/adventure/aerial.jpg',
-    highlights: '50m–300m Spans · Dual Cables · Magnetic Brakes',
+    highlights: '50m–500m Spans · Dual Cables · Roller Coaster Rails',
     attractions: [
       'Zipline',
-      'Superman Zipline',
-      'Couple Zipline',
-      'Motorised Zipline',
-      'Kids Zipline',
-      'Sky Cycle',
-      'Zip Surfing',
       'Roller Coaster Zipline'
     ]
   },
@@ -179,17 +214,17 @@ const ADVENTURE_CATEGORIES = [
     key: 'extreme',
     icon: Flame,
     name: 'Extreme Thrills',
-    subtitle: 'For visitors who want an adrenaline-filled experience.',
-    cta: 'Explore Extreme Thrills',
+    subtitle: 'High-energy launch, swing, bungee and elevated glass decks.',
+    cta: 'Explore Extreme Setups',
     image: '/images/adventure/extreme.jpg',
-    highlights: '40m–200m Drops · 100% Redundant Rigging · High ROI',
+    highlights: '30ft–200m Heights · Redundant Rigging · High ROI',
     attractions: [
-      'Bungee Jump',
       'Quick Jump',
+      'Giant Swing',
       'Reverse Bungee',
       'Human Bungee Slingshot',
       'Bungee Ejector',
-      'Giant Swing',
+      'Bungee Jumping',
       'Glass Bridge / Sky Walk'
     ]
   },
@@ -197,551 +232,698 @@ const ADVENTURE_CATEGORIES = [
     key: 'climbing',
     icon: Mountain,
     name: 'Climbing & Ropes',
-    subtitle: 'Create challenging experiences for individuals, groups and team activities.',
+    subtitle: 'Challenging obstacles, vertical walls and canopy walkways.',
     cta: 'Explore Ropes & Climbing',
     image: '/images/adventure/climbing.jpg',
-    highlights: '8–40 Obstacles · Continuous Lifeline · TRUBLUE Belay',
+    highlights: '8–40 Obstacles · Modular Panels · Continuous Belay',
     attractions: [
       'Climbing Wall',
-      'Kids Climbing Wall',
-      'Bouldering Wall',
-      'Rappelling',
-      'Slithering',
+      'Rappelling / Slithering',
       'Canopy Walk',
-      'Burma Bridge',
       'Compact Ropes Course',
-      'High Ropes Course',
-      'Low Ropes Course',
-      'Tree Top Ropes Course'
+      'High Ropes Course'
     ]
   },
   {
     key: 'motorsport',
     icon: Car,
     name: 'Motorsport & Racing',
-    subtitle: 'Bring speed and competition to your adventure destination.',
-    cta: 'Explore Motorsport',
+    subtitle: 'Speed, off-road dirt trails, pump circuits and kart arenas.',
+    cta: 'Explore Motorsport Setups',
     image: '/images/adventure/motorsport.jpg',
-    highlights: '200m–1,000m Tracks · Electric & Petrol Karts · Telemetry',
+    highlights: '200m–1,000m Circuits · Safety Barriers · Off-Road Trails',
     attractions: [
-      'Go Karting',
       'ATV Track',
-      'Motocross Track',
       'Bike Pump Track',
+      'Go Kart Arena',
       'Luge Kart Ride'
-    ]
-  },
-  {
-    key: 'games',
-    icon: Target,
-    name: 'Games & Combat',
-    subtitle: 'Perfect for groups, families, corporate outings and entertainment parks.',
-    cta: 'Explore Games',
-    image: '/images/adventure/games.jpg',
-    highlights: 'Multi-Level Labyrinths · Sup-Air Bunkers · Turnkey Arena',
-    attractions: [
-      'Paintball Arena',
-      'Laser Tag Arena',
-      'Obstacle Courses',
-      'Battle Obstacle Course',
-      'Kids Obstacle Park',
-      'Kids Obstacle Circuit',
-      'Indoor Obstacle Games'
     ]
   },
   {
     key: 'family',
     icon: Users,
     name: 'Family & Kids',
-    subtitle: 'Create fun-filled spaces for children and families.',
-    cta: 'Explore Family Experiences',
+    subtitle: 'Safe, flexible and active entertainment zones for all age groups.',
+    cta: 'Explore Family Setups',
     image: '/images/adventure/family.jpg',
-    highlights: 'Padded Safety · Foam Pits · All-Age Entertainment',
+    highlights: 'Padded Soft Play · Inflatables · Human Gyro',
     attractions: [
-      'Kids Zipline',
-      'Kids Fun Wall',
       'Soft Play Area',
-      'Trampoline Park',
       'Inflatables',
-      'Mini Golf',
-      '360 Cycle',
-      'Human Gyro',
-      'Life Size Snake & Ladder',
-      'Life Size Angry Bird'
+      'Human Gyro'
     ]
   },
   {
-    key: 'nature',
-    icon: Tent,
-    name: 'Nature & Outdoor Experiences',
-    subtitle: 'Combine adventure with nature and destination stays.',
-    cta: 'Explore Outdoor Experiences',
-    image: '/images/adventure/nature.jpg',
-    highlights: 'Geodesic Domes · Swiss Cottages · All-Weather Decking',
+    key: 'games',
+    icon: Target,
+    name: 'Games & Mazes',
+    subtitle: 'Modular walk-through labyrinth navigation for families and groups.',
+    cta: 'Explore Maze Setups',
+    image: '/images/adventure/games.jpg',
+    highlights: '1,200–18,000 sq ft · Modular Labyrinths · Group Fun',
     attractions: [
-      'Camping',
-      'Tree House / Cabanas',
-      'Star Gazing',
-      'Canopy Walk',
-      'Adventure Trails',
-      'Camping Archery',
-      'Zorbing Track'
-    ]
-  },
-  {
-    key: 'flying',
-    icon: Plane,
-    name: 'Sky & Flying Experiences',
-    subtitle: 'Take your visitors beyond the ordinary.',
-    cta: 'Explore Flying Experiences',
-    image: '/images/adventure/flying.jpg',
-    highlights: '160ft Hoisted Dining · Tethered Balloons · Scenic Views',
-    attractions: [
-      'Hot Air Balloon',
-      'Paramotoring',
-      'Micro Lite Flying',
-      'Indoor Sky Diving',
-      'Fly Dining',
-      'Dinner in the Sky',
-      'Zip Dining'
+      'Human Maze'
     ]
   },
   {
     key: 'indoor',
     icon: Gamepad2,
     name: 'Indoor Entertainment',
-    subtitle: "Adventure doesn't have to stop when the weather changes.",
-    cta: 'Explore Indoor Entertainment',
+    subtitle: 'Weatherproof VR simulators and vertical wind tunnel flight.',
+    cta: 'Explore Indoor Setups',
     image: '/images/adventure/indoor.jpg',
-    highlights: 'Vertical Wind Tunnels · 6DOF VR Arenas · Weatherproof FEC',
+    highlights: 'VR Cricket · Vertical Wind Tunnels · All-Weather FEC',
     attractions: [
-      'VR Gaming',
-      'Arcade Gaming',
       'VR Cricket',
-      'Indoor Sky Diving',
-      'Indoor Go Karting',
-      'Indoor Laser Tag',
-      'Indoor Paintball',
-      'Bowling Alley',
-      'Synthetic Ice Rink'
+      'Indoor Sky Diving'
     ]
   },
   {
-    key: 'sports',
-    icon: Trophy,
-    name: 'Sports & Recreation',
-    subtitle: 'Build dedicated spaces for active recreation and sports.',
-    cta: 'Explore Sports',
-    image: '/images/adventure/sports.jpg',
-    highlights: 'FIFA Monofilament Turf · Box Cricket Nets · Floodlit Arenas',
+    key: 'flying',
+    icon: Plane,
+    name: 'Sky & Flying Experiences',
+    subtitle: 'Powered aviation experiences for destination airfields.',
+    cta: 'Explore Flying Setups',
+    image: '/images/adventure/flying.jpg',
+    highlights: 'Specialised Staff · Powered Wings · Panoramic Flight',
     attractions: [
-      'Football Turf',
-      'Box Cricket',
-      'VR Cricket',
-      'Mini Golf',
-      'Rifle Shooting',
-      'Camping Archery',
-      'Bike Pump Track'
+      'Paramotoring',
+      'Micro Lite Flying'
     ]
   }
 ];
 
-// Full Catalogue Items
+// All 26 Verified Adventure Setup Catalogue Items
 const CATALOGUE_ITEMS: SetupSpec[] = [
-  // Aerial
+  // 1. Zipline
   {
-    id: 'cat-zipline',
+    id: 'setup-1-zipline',
     name: 'Zipline',
     category: 'Aerial Adventures',
     categoryKey: 'aerial',
-    tagline: 'High-speed valley and landscape crossing',
-    description: 'Single or twin-line ziplining system with steel cable, custom anchor towers, and magnetic braking.',
+    popular: true,
+    tagline: 'Glide Across Open Landscapes',
+    description:
+      'Glide across open landscapes on an exciting zipline experience, designed for different site layouts and rider requirements.',
     tags: ['Outdoor', 'Extreme', 'Family'],
     indicativeBudget: '₹6–26 Lakh',
-    spaceRequired: '240–1,500 sq m',
+    spaceRequired: '240–1,500 m²',
     installationTime: '6–12 Weeks',
-    image: '/images/adventure/aerial.jpg'
+    image: '/images/adventure/aerial.jpg',
+    keyComponents: 'Support structure, wire and braking systems',
+    highlightSpecs: {
+      'Size / Span': '50–300 m on flat ground',
+      'Footprint Area': '240–1,500 m²',
+      'Indicative Budget': '₹6–26 Lakh',
+      'Installation Timeline': '6–12 Weeks',
+      'Key Components': 'Support structure, wire and braking systems'
+    }
   },
+  // 2. Roller Coaster Zipline
   {
-    id: 'cat-superman-zipline',
-    name: 'Superman Zipline',
-    category: 'Aerial Adventures',
-    categoryKey: 'aerial',
-    tagline: 'Horizontal prone-flying sensation',
-    description: 'Fly face-first in a specialized aerodynamic harness mimicking free flight over scenic terrain.',
-    tags: ['Outdoor', 'Extreme'],
-    indicativeBudget: '₹12–35 Lakh',
-    spaceRequired: '500–2,000 sq m',
-    installationTime: '8–14 Weeks',
-    image: '/images/adventure/aerial.jpg'
-  },
-  {
-    id: 'cat-couple-zipline',
-    name: 'Couple Zipline',
-    category: 'Aerial Adventures',
-    categoryKey: 'aerial',
-    tagline: 'Tandem side-by-side aerial run',
-    description: 'Dual-track synchronized launch system for couples, friends, and parent-child pairings.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹10–30 Lakh',
-    spaceRequired: '400–1,800 sq m',
-    installationTime: '8–12 Weeks',
-    image: '/images/adventure/aerial.jpg'
-  },
-  {
-    id: 'cat-motorised-zipline',
-    name: 'Motorised Zipline',
-    category: 'Aerial Adventures',
-    categoryKey: 'aerial',
-    tagline: 'Controlled round-trip powered flight',
-    description: 'Electric winch return system allowing two-way travel on flat ground without requiring gravity slope.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹18–45 Lakh',
-    spaceRequired: '300–1,200 sq m',
-    installationTime: '10–16 Weeks',
-    image: '/images/adventure/aerial.jpg'
-  },
-  {
-    id: 'cat-sky-cycle',
-    name: 'Sky Cycle',
-    category: 'Aerial Adventures',
-    categoryKey: 'aerial',
-    tagline: 'Pedal across the open sky on twin steel wires',
-    description: 'High-wire tandem counterweighted bicycle riding suspended 30–80 feet above the ground.',
-    tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹14–38 Lakh',
-    spaceRequired: '300–1,000 sq m',
-    installationTime: '8–14 Weeks',
-    image: '/images/adventure/aerial.jpg'
-  },
-  {
-    id: 'cat-zip-surfing',
-    name: 'Zip Surfing',
-    category: 'Aerial Adventures',
-    categoryKey: 'aerial',
-    tagline: 'Surf the air currents on a suspended board',
-    description: 'Airborne snowboard/surfboard system secured to dual overhead cables for balancing flight.',
-    tags: ['Outdoor', 'Extreme'],
-    indicativeBudget: '₹12–28 Lakh',
-    spaceRequired: '250–900 sq m',
-    installationTime: '6–10 Weeks',
-    image: '/images/adventure/aerial.jpg'
-  },
-  {
-    id: 'cat-roller-coaster-zipline',
+    id: 'setup-2-roller-coaster-zipline',
     name: 'Roller Coaster Zipline',
     category: 'Aerial Adventures',
     categoryKey: 'aerial',
-    tagline: 'Curved rail continuous roller-flying track',
-    description: 'Curved structural pipe track combining the free-hanging drop of a zip wire with coaster dips and curves.',
+    tagline: 'Curved Rail Continuous Thrill Ride',
+    description:
+      'Combine the thrill of a zipline with a curved rail-based ride for a distinctive adventure attraction.',
     tags: ['Outdoor', 'Extreme'],
-    indicativeBudget: '₹45–140 Lakh',
-    spaceRequired: '1,500–6,000 sq m',
-    installationTime: '16–28 Weeks',
-    image: '/images/adventure/aerial.jpg'
+    indicativeBudget: '₹16–120 Lakh',
+    spaceRequired: '300–1,200 m²',
+    installationTime: '12–24 Weeks',
+    image: '/images/adventure/aerial.jpg',
+    keyComponents: 'Support structure, rail system and pulley',
+    highlightSpecs: {
+      'Size / Span': '100–500 m on flat ground',
+      'Footprint Area': '300–1,200 m²',
+      'Indicative Budget': '₹16–120 Lakh',
+      'Installation Timeline': '12–24 Weeks',
+      'Key Components': 'Support structure, rail system and pulley'
+    }
   },
-  // Extreme
+  // 3. Climbing Wall
   {
-    id: 'cat-bungee-jump',
-    name: 'Bungee Jump',
-    category: 'Extreme Thrills',
-    categoryKey: 'extreme',
-    tagline: 'The ultimate free-fall adrenaline test',
-    description: 'Cantilever crane, tower, or cliff-edge bungee platform with redundant latex rubber cord rigging.',
-    tags: ['Outdoor', 'Extreme'],
-    indicativeBudget: '₹100–180 Lakh',
-    spaceRequired: '600–1,200 sq m',
-    installationTime: '24–36 Weeks',
-    image: '/images/adventure/extreme.jpg'
-  },
-  {
-    id: 'cat-quick-jump',
-    name: 'Quick Jump',
-    category: 'Extreme Thrills',
-    categoryKey: 'extreme',
-    tagline: 'Controlled free-fall magnetic braking descent',
-    description: 'Step off high platforms with instant initial freefall before smooth magnetic auto-braking touchdown.',
-    tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹8–22 Lakh',
-    spaceRequired: '100–300 sq m',
-    installationTime: '4–8 Weeks',
-    image: '/images/adventure/extreme.jpg'
-  },
-  {
-    id: 'cat-reverse-bungee',
-    name: 'Reverse Bungee',
-    category: 'Extreme Thrills',
-    categoryKey: 'extreme',
-    tagline: 'Rocket skyward from ground level at 100 km/h',
-    description: 'High-tension slingshot tower launching passenger pods hundreds of feet vertically in seconds.',
-    tags: ['Outdoor', 'Extreme'],
-    indicativeBudget: '₹75–160 Lakh',
-    spaceRequired: '800–2,000 sq m',
-    installationTime: '18–30 Weeks',
-    image: '/images/adventure/extreme.jpg'
-  },
-  {
-    id: 'cat-giant-swing',
-    name: 'Giant Swing',
-    category: 'Extreme Thrills',
-    categoryKey: 'extreme',
-    tagline: 'Massive pendulum free-swing over canyons',
-    description: 'Winch-lifted pendulum release swinging 1 to 3 riders through a wide arc over drops.',
-    tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹35–85 Lakh',
-    spaceRequired: '500–1,500 sq m',
-    installationTime: '12–20 Weeks',
-    image: '/images/adventure/extreme.jpg'
-  },
-  {
-    id: 'cat-glass-bridge',
-    name: 'Glass Bridge / Sky Walk',
-    category: 'Extreme Thrills',
-    categoryKey: 'extreme',
-    tagline: 'Transparent cantilever deck suspended in midair',
-    description: 'Triple-laminated tempered glass cantilever viewing bridge perched over cliffs or scenic drops.',
-    tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹80–350 Lakh',
-    spaceRequired: '400–2,500 sq m',
-    installationTime: '20–40 Weeks',
-    image: '/images/adventure/extreme.jpg'
-  },
-  // Climbing & Ropes
-  {
-    id: 'cat-climbing-wall',
+    id: 'setup-3-climbing-wall',
     name: 'Climbing Wall',
     category: 'Climbing & Ropes',
     categoryKey: 'climbing',
-    tagline: 'Vertical artificial climbing towers with multiple routes',
-    description: 'FRP or textured plywood climbing structure with modular climbing holds and TRUBLUE auto-belays.',
+    tagline: 'Challenge Balance, Strength & Climbing Skills',
+    description:
+      'Challenge balance, strength and climbing skills with a purpose-built climbing wall for adventure venues.',
     tags: ['Outdoor', 'Indoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹8–28 Lakh',
-    spaceRequired: '120–400 sq m',
-    installationTime: '4–10 Weeks',
-    image: '/images/adventure/climbing.jpg'
+    indicativeBudget: '₹2.4–40 Lakh',
+    spaceRequired: '16–100 m²',
+    installationTime: '4–12 Weeks',
+    image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Support structure and panels',
+    highlightSpecs: {
+      'Wall Height': '12–60 ft',
+      'Footprint Area': '16–100 m²',
+      'Indicative Budget': '₹2.4–40 Lakh',
+      'Installation Timeline': '4–12 Weeks',
+      'Key Components': 'Support structure and panels'
+    }
   },
+  // 4. Rappelling / Slithering
   {
-    id: 'cat-high-ropes',
-    name: 'High Ropes Course',
+    id: 'setup-4-rappelling-slithering',
+    name: 'Rappelling / Slithering',
     category: 'Climbing & Ropes',
     categoryKey: 'climbing',
-    tagline: 'Multi-level suspended obstacle course',
-    description: 'Continuous belay safety lifeline system over burma bridges, log crossings, spider nets and platforms.',
-    tags: ['Outdoor', 'Family', 'Extreme'],
-    indicativeBudget: '₹14–70 Lakh',
-    spaceRequired: '300–1,200 sq m',
-    installationTime: '6–22 Weeks',
-    image: '/images/adventure/climbing.jpg'
+    tagline: 'Controlled Vertical Descent & Specialist Rope Systems',
+    description:
+      'Experience a controlled descent along a vertical surface using appropriate ropes and specialist equipment.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹3.6–14 Lakh',
+    spaceRequired: '16–100 m²',
+    installationTime: '4–8 Weeks',
+    image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Support structure and panels',
+    highlightSpecs: {
+      'Descent Height': '24–60 ft',
+      'Footprint Area': '16–100 m²',
+      'Indicative Budget': '₹3.6–14 Lakh',
+      'Installation Timeline': '4–8 Weeks',
+      'Key Components': 'Support structure and panels'
+    }
   },
+  // 5. Quick Jump
   {
-    id: 'cat-canopy-walk',
+    id: 'setup-5-quick-jump',
+    name: 'Quick Jump',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    tagline: 'Free-Fall-Style Height Attraction with Soft Catch',
+    description:
+      'Add a height-based adventure attraction for visitors seeking an exciting free-fall-style experience.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹5–22 Lakh',
+    spaceRequired: '20–40 m²',
+    installationTime: '3–6 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Support structure, device and equipment',
+    highlightSpecs: {
+      'Drop Height': '30–80 ft',
+      'Footprint Area': '20–40 m²',
+      'Indicative Budget': '₹5–22 Lakh',
+      'Installation Timeline': '3–6 Weeks',
+      'Key Components': 'Support structure, device and equipment'
+    }
+  },
+  // 6. Giant Swing
+  {
+    id: 'setup-6-giant-swing',
+    name: 'Giant Swing',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    tagline: 'High-Arc Pendulum Swing Experience',
+    description:
+      'Give visitors a memorable high-swing experience with a purpose-designed support structure and mechanism.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹8–40 Lakh',
+    spaceRequired: '80–400 m²',
+    installationTime: '4–16 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Support structure and mechanism',
+    highlightSpecs: {
+      'Swing Height': '40–100 ft',
+      'Footprint Area': '80–400 m²',
+      'Indicative Budget': '₹8–40 Lakh',
+      'Installation Timeline': '4–16 Weeks',
+      'Key Components': 'Support structure and mechanism'
+    }
+  },
+  // 7. Reverse Bungee
+  {
+    id: 'setup-7-reverse-bungee',
+    name: 'Reverse Bungee',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    tagline: 'High-Energy Ground-to-Sky Launch Attraction',
+    description:
+      'Create a high-energy launch-style attraction for adventure parks and destination experiences.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹3.5–26 Lakh',
+    spaceRequired: '60–300 m²',
+    installationTime: '3–12 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Engineering, support structure and cords',
+    highlightSpecs: {
+      'Jump Height': '32–100 ft',
+      'Footprint Area': '60–300 m²',
+      'Indicative Budget': '₹3.5–26 Lakh',
+      'Installation Timeline': '3–12 Weeks',
+      'Key Components': 'Engineering, support structure and cords'
+    }
+  },
+  // 8. Human Bungee Slingshot
+  {
+    id: 'setup-8-human-bungee-slingshot',
+    name: 'Human Bungee Slingshot',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    tagline: 'High-Velocity Launch Attraction with Cord System',
+    description:
+      'Deliver a launch-style adventure attraction designed around a specialised structure and cord system.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹8–24 Lakh',
+    spaceRequired: '240–500 m²',
+    installationTime: '4–12 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Engineering, support structure and cords',
+    highlightSpecs: {
+      'Throw Distance': '60–180 ft',
+      'Footprint Area': '240–500 m²',
+      'Indicative Budget': '₹8–24 Lakh',
+      'Installation Timeline': '4–12 Weeks',
+      'Key Components': 'Engineering, support structure and cords'
+    }
+  },
+  // 9. Bungee Ejector
+  {
+    id: 'setup-9-bungee-ejector',
+    name: 'Bungee Ejector',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    tagline: 'Compact Launch Ride with Prefabricated Components',
+    description:
+      'Introduce a compact launch-style ride using prefabricated components.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹3.5–4 Lakh',
+    spaceRequired: '140 m²',
+    installationTime: '3 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Prefabricated components',
+    highlightSpecs: {
+      'Throw Distance': '40–60 ft',
+      'Footprint Area': '140 m²',
+      'Indicative Budget': '₹3.5–4 Lakh',
+      'Installation Timeline': '3 Weeks',
+      'Key Components': 'Prefabricated components'
+    }
+  },
+  // 10. Bungee Jumping
+  {
+    id: 'setup-10-bungee-jumping',
+    name: 'Bungee Jumping',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    popular: true,
+    tagline: 'Major Flagship Destination Gravity Jump',
+    description:
+      'Build a major adventure attraction for destinations seeking a high-impact, specialist-operated experience.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹100–180 Lakh',
+    spaceRequired: '600–1,200 m²',
+    installationTime: '24–36 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    keyComponents: 'Support structure, lift system and cords',
+    highlightSpecs: {
+      'Drop Height': '40–70 m on flat ground; up to 200 m in mountains',
+      'Footprint Area': '600–1,200 m²',
+      'Indicative Budget': '₹100–180 Lakh',
+      'Installation Timeline': '24–36 Weeks',
+      'Key Components': 'Support structure, lift system and cords'
+    }
+  },
+  // 11. Glass Bridge / Sky Walk
+  {
+    id: 'setup-11-glass-bridge-sky-walk',
+    name: 'Glass Bridge / Sky Walk',
+    category: 'Extreme Thrills',
+    categoryKey: 'extreme',
+    popular: true,
+    tagline: 'Dramatic Elevated Transparent Viewing Experience',
+    description:
+      'Create a dramatic elevated viewing experience with a glass walking surface and engineered support system.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹15–220 Lakh',
+    spaceRequired: '80–800 m²',
+    installationTime: '6–40 Weeks',
+    image: '/images/adventure/extreme.jpg',
+    siteNote: 'Possible integration with an existing bungee tower or mountain site.',
+    keyComponents: 'Support structure, laminated glass panels and safety railings',
+    highlightSpecs: {
+      'Bridge Surface Size': '30–200 m²',
+      'Footprint Area': '80–800 m²',
+      'Indicative Budget': '₹15–220 Lakh',
+      'Installation Timeline': '6–40 Weeks',
+      'Site Note': 'Possible integration with existing bungee tower or mountain site'
+    }
+  },
+  // 12. Canopy Walk
+  {
+    id: 'setup-12-canopy-walk',
     name: 'Canopy Walk',
     category: 'Climbing & Ropes',
     categoryKey: 'climbing',
-    tagline: 'Scenic forest-top suspension walkway',
-    description: 'Gentle elevated suspension bridges interconnecting treetops or eco-resort canopy views.',
+    tagline: 'Elevated Scenic Treetop Walkway Route',
+    description:
+      'Let visitors explore elevated routes through natural surroundings using a purpose-designed walkway.',
     tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹18–50 Lakh',
-    spaceRequired: '400–2,000 sq m',
-    installationTime: '8–16 Weeks',
-    image: '/images/adventure/climbing.jpg'
+    indicativeBudget: '₹4–40 Lakh',
+    spaceRequired: '40–400 m²',
+    installationTime: '3–16 Weeks',
+    image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Engineering and structure',
+    highlightSpecs: {
+      'Walkway Length': '10–100 m',
+      'Footprint Area': '40–400 m²',
+      'Indicative Budget': '₹4–40 Lakh',
+      'Installation Timeline': '3–16 Weeks',
+      'Key Components': 'Engineering and structure'
+    }
   },
-  // Motorsport
+  // 13. ATV Track
   {
-    id: 'cat-go-karting',
-    name: 'Go Karting',
-    category: 'Motorsport & Racing',
-    categoryKey: 'motorsport',
-    tagline: 'Competitive track racing for all skill levels',
-    description: 'Gasoline or high-torque electric kart racing arena with electronic safety marshaling and timing.',
-    tags: ['Outdoor', 'Indoor', 'Family'],
-    indicativeBudget: '₹40–190 Lakh',
-    spaceRequired: '1,800–12,000 sq m',
-    installationTime: '16–36 Weeks',
-    image: '/images/adventure/motorsport.jpg'
-  },
-  {
-    id: 'cat-atv-track',
+    id: 'setup-13-atv-track',
     name: 'ATV Track',
     category: 'Motorsport & Racing',
     categoryKey: 'motorsport',
-    tagline: 'Off-road all-terrain mud and dune trails',
-    description: 'Custom engineered dirt and gravel circuits with banked turns, whoops, and water splashes.',
+    tagline: 'Off-Road Riding Circuit for Destinations',
+    description:
+      'Design an off-road riding circuit for adventure destinations and outdoor recreation facilities.',
     tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹25–70 Lakh',
-    spaceRequired: '2,500–15,000 sq m',
-    installationTime: '8–18 Weeks',
-    image: '/images/adventure/motorsport.jpg'
+    indicativeBudget: '₹4–40 Lakh',
+    spaceRequired: '2,000–12,000 m²',
+    installationTime: '3–16 Weeks',
+    image: '/images/adventure/motorsport.jpg',
+    keyComponents: 'Track and layout (ATV vehicles are extra, with multiple options available)',
+    highlightSpecs: {
+      'Track Length': '300–1,000 m',
+      'Footprint Area': '2,000–12,000 m²',
+      'Indicative Budget': '₹4–40 Lakh',
+      'Installation Timeline': '3–16 Weeks',
+      'Key Components': 'Track and layout. ATV vehicles are extra, with multiple options available'
+    }
   },
+  // 14. Bike Pump Track
   {
-    id: 'cat-bike-pump-track',
+    id: 'setup-14-bike-pump-track',
     name: 'Bike Pump Track',
     category: 'Motorsport & Racing',
     categoryKey: 'motorsport',
-    tagline: 'Asphalt pump circuit for BMX, skateboards and MTB',
-    description: 'Continuous loop of rollers and berms allowing riders to maintain speed solely through pumping body motions.',
+    tagline: 'Contoured Riding Surfaces for Skill & Recreation',
+    description:
+      'Create a purpose-built cycling track featuring shaped riding surfaces for recreational and skill-based riding.',
     tags: ['Outdoor', 'Family', 'Kids'],
-    indicativeBudget: '₹15–45 Lakh',
-    spaceRequired: '600–2,500 sq m',
-    installationTime: '6–12 Weeks',
-    image: '/images/adventure/motorsport.jpg'
+    indicativeBudget: '₹5 Lakh onwards',
+    spaceRequired: '400–1,500 m²',
+    installationTime: '4–12 Weeks',
+    image: '/images/adventure/motorsport.jpg',
+    keyComponents: 'Design and surface material',
+    highlightSpecs: {
+      'Track Length': '300–800 m',
+      'Footprint Area': '400–1,500 m²',
+      'Indicative Budget': '₹5 Lakh onwards',
+      'Installation Timeline': '4–12 Weeks',
+      'Key Components': 'Design and surface material'
+    }
   },
-  // Games & Combat
+  // 15. Compact Ropes Course
   {
-    id: 'cat-paintball',
-    name: 'Paintball Arena',
-    category: 'Games & Combat',
-    categoryKey: 'games',
-    tagline: 'Tactical battleground with bunkers and strategy zones',
-    description: 'Regulated mesh-enclosed tactical arena with inflatable sup-air bunkers, CO2 refill stations and referee stands.',
+    id: 'setup-15-compact-ropes-course',
+    name: 'Compact Ropes Course',
+    category: 'Climbing & Ropes',
+    categoryKey: 'climbing',
+    tagline: 'Multi-Element Challenge for Adventure & Team Activities',
+    description:
+      'Build an engaging ropes-based challenge with multiple elements for adventure and team activities.',
+    tags: ['Outdoor', 'Family', 'Kids'],
+    indicativeBudget: '₹8–40 Lakh',
+    spaceRequired: '100–800 m²',
+    installationTime: '4–16 Weeks',
+    image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Structure, elements and belay system',
+    highlightSpecs: {
+      'Challenge Elements': '8–40 Elements',
+      'Footprint Area': '100–800 m²',
+      'Indicative Budget': '₹8–40 Lakh',
+      'Installation Timeline': '4–16 Weeks',
+      'Key Components': 'Structure, elements and belay system'
+    }
+  },
+  // 16. High Ropes Course
+  {
+    id: 'setup-16-high-ropes-course',
+    name: 'High Ropes Course',
+    category: 'Climbing & Ropes',
+    categoryKey: 'climbing',
+    popular: true,
+    tagline: 'Elevated Obstacle, Movement & Rope Challenges',
+    description:
+      'Develop an elevated obstacle experience combining balance, movement and rope-based challenges.',
     tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹10–35 Lakh',
-    spaceRequired: '800–2,500 sq m',
-    installationTime: '4–8 Weeks',
-    image: '/images/adventure/games.jpg'
+    indicativeBudget: '₹14–70 Lakh',
+    spaceRequired: '300–1,200 m²',
+    installationTime: '6–22 Weeks',
+    image: '/images/adventure/climbing.jpg',
+    keyComponents: 'Structure, elements and belay system',
+    highlightSpecs: {
+      'Challenge Elements': '8–40 Elements',
+      'Footprint Area': '300–1,200 m²',
+      'Indicative Budget': '₹14–70 Lakh',
+      'Installation Timeline': '6–22 Weeks',
+      'Key Components': 'Structure, elements and belay system'
+    }
   },
+  // 17. Soft Play Area
   {
-    id: 'cat-laser-tag',
-    name: 'Laser Tag Arena',
-    category: 'Games & Combat',
-    categoryKey: 'games',
-    tagline: 'Sci-fi glow-in-the-dark infrared battle zone',
-    description: 'Blacklight neon indoor labyrinth with multi-level vantage points, fog effects, and digital phaser vests.',
-    tags: ['Indoor', 'Family', 'Kids'],
-    indicativeBudget: '₹18–55 Lakh',
-    spaceRequired: '300–900 sq m',
-    installationTime: '6–12 Weeks',
-    image: '/images/adventure/games.jpg'
-  },
-  // Family & Kids
-  {
-    id: 'cat-trampoline-park',
-    name: 'Trampoline Park',
+    id: 'setup-17-soft-play-area',
+    name: 'Soft Play Area',
     category: 'Family & Kids',
     categoryKey: 'family',
-    tagline: 'Interconnected wall-to-wall bouncing zones',
-    description: 'High-rebound commercial jumping fields with foam pits, slam dunk basketball hoops, and dodgeball arenas.',
+    tagline: 'Dedicated Padded Indoor Play Environment',
+    description:
+      'Create a dedicated indoor play environment with prefabricated equipment for family entertainment venues.',
     tags: ['Indoor', 'Family', 'Kids'],
-    indicativeBudget: '₹30–90 Lakh',
-    spaceRequired: '400–1,500 sq m',
-    installationTime: '8–16 Weeks',
-    image: '/images/adventure/family.jpg'
+    indicativeBudget: '₹15 Lakh onwards',
+    spaceRequired: '1,200–12,000 sq ft',
+    installationTime: '10–20 Weeks',
+    image: '/images/adventure/family.jpg',
+    keyComponents: 'Prefabricated items',
+    highlightSpecs: {
+      'Facility Size': '1,200–12,000 sq ft',
+      'Footprint Area': '1,200–12,000 sq ft',
+      'Indicative Budget': '₹15 Lakh onwards',
+      'Installation Timeline': '10–20 Weeks',
+      'Key Components': 'Prefabricated items'
+    }
   },
+  // 18. Inflatables
   {
-    id: 'cat-mini-golf',
-    name: 'Mini Golf',
+    id: 'setup-18-inflatables',
+    name: 'Inflatables',
     category: 'Family & Kids',
     categoryKey: 'family',
-    tagline: '9 or 18-hole whimsical landscaped putting challenge',
-    description: 'Themed artificial turf putting courses with water hazards, tunnels, kinetic obstacles, and night lighting.',
+    tagline: 'Flexible Inflatable Attractions for Events & Zones',
+    description:
+      'Add flexible inflatable attractions for recreational venues, events and family activity zones.',
     tags: ['Outdoor', 'Indoor', 'Family', 'Kids'],
-    indicativeBudget: '₹12–40 Lakh',
-    spaceRequired: '350–1,200 sq m',
-    installationTime: '6–14 Weeks',
-    image: '/images/adventure/family.jpg'
+    indicativeBudget: '₹2 Lakh onwards',
+    spaceRequired: '100–4,000 m²',
+    installationTime: '2 Weeks',
+    image: '/images/adventure/family.jpg',
+    keyComponents: 'Prefabricated items',
+    highlightSpecs: {
+      'Elements': '5–40 Elements',
+      'Footprint Area': '100–4,000 m²',
+      'Indicative Budget': '₹2 Lakh onwards',
+      'Installation Timeline': '2 Weeks',
+      'Key Components': 'Prefabricated items'
+    }
   },
-  // Nature & Outdoor
+  // 19. Human Gyro
   {
-    id: 'cat-glamping-campsite',
-    name: 'Adventure Camping & Glamping',
-    category: 'Nature & Outdoor Experiences',
-    categoryKey: 'nature',
-    tagline: 'Curated wilderness accommodation with luxury comforts',
-    description: 'Weatherproof Alpine, Swiss cottage, and geodesic dome setups with insulated subfloors and luxury ensuite bathrooms.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹1 Lakh onwards',
-    spaceRequired: '300–1,200 sq m',
-    installationTime: '1–12 Weeks',
-    image: '/images/adventure/nature.jpg'
-  },
-  {
-    id: 'cat-tree-house',
-    name: 'Tree House / Cabanas',
-    category: 'Nature & Outdoor Experiences',
-    categoryKey: 'nature',
-    tagline: 'Elevated luxury timber sanctuaries in nature',
-    description: 'Engineered non-invasive tree-mounted or stilt cabanas with panoramic forest decks and resort comforts.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹15–60 Lakh',
-    spaceRequired: '150–600 sq m',
-    installationTime: '8–16 Weeks',
-    image: '/images/adventure/nature.jpg'
-  },
-  // Sky & Flying
-  {
-    id: 'cat-hot-air-balloon',
-    name: 'Hot Air Balloon (Tethered & Free)',
-    category: 'Sky & Flying Experiences',
-    categoryKey: 'flying',
-    tagline: 'Panoramic aerial destination ascent',
-    description: 'Certified tethered aerostat system lifting 4–12 guests 150–300 feet for spectacular destination views.',
-    tags: ['Outdoor', 'Family'],
-    indicativeBudget: '₹40–120 Lakh',
-    spaceRequired: '1,500–5,000 sq m',
-    installationTime: '12–24 Weeks',
-    image: '/images/adventure/flying.jpg'
-  },
-  {
-    id: 'cat-fly-dining',
-    name: 'Fly Dining / Dinner in the Sky',
-    category: 'Sky & Flying Experiences',
-    categoryKey: 'flying',
-    tagline: 'Gourmet dining suspended 160 feet in the clouds',
-    description: 'Specialized 22-seat dining table platform hoisted by heavy-duty mobile crane with safety harnesses.',
-    tags: ['Outdoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹85–220 Lakh',
-    spaceRequired: '600–1,500 sq m',
-    installationTime: '12–20 Weeks',
-    image: '/images/adventure/flying.jpg'
-  },
-  // Indoor
-  {
-    id: 'cat-indoor-skydiving',
-    name: 'Indoor Sky Diving (Vertical Wind Tunnel)',
-    category: 'Indoor Entertainment',
-    categoryKey: 'indoor',
-    tagline: 'True body flight without leaping from an aircraft',
-    description: 'High-speed recirculating vertical airflow tunnel generating up to 250 km/h wind for human levitation.',
-    tags: ['Indoor', 'Extreme', 'Family'],
-    indicativeBudget: '₹250–800 Lakh',
-    spaceRequired: '400–1,200 sq m',
-    installationTime: '28–52 Weeks',
-    image: '/images/adventure/indoor.jpg'
-  },
-  {
-    id: 'cat-vr-gaming',
-    name: 'VR Gaming & Free-Roam Arena',
-    category: 'Indoor Entertainment',
-    categoryKey: 'indoor',
-    tagline: 'Untethered 6DOF multiplayer virtual worlds',
-    description: 'Backpack PC or standalone Wi-Fi 6E spatial tracking arena where players interact in shared virtual reality.',
-    tags: ['Indoor', 'Family', 'Kids'],
-    indicativeBudget: '₹20–65 Lakh',
-    spaceRequired: '150–500 sq m',
-    installationTime: '4–10 Weeks',
-    image: '/images/adventure/indoor.jpg'
-  },
-  // Sports
-  {
-    id: 'cat-football-turf',
-    name: 'Football Turf & Box Cricket',
-    category: 'Sports & Recreation',
-    categoryKey: 'sports',
-    tagline: 'High-revenue FIFA-grade synthetic turf grounds',
-    description: 'Monofilament 50mm artificial grass with silica sand, rubber granules infill, perimeter netting, and floodlights.',
+    id: 'setup-19-human-gyro',
+    name: 'Human Gyro',
+    category: 'Family & Kids',
+    categoryKey: 'family',
+    tagline: 'Compact Footprint Rotating Ride Experience',
+    description:
+      'Offer a rotating ride experience in a compact footprint, with two-person and four-person versions listed.',
     tags: ['Outdoor', 'Indoor', 'Family'],
-    indicativeBudget: '₹18–48 Lakh',
-    spaceRequired: '600–2,000 sq m',
-    installationTime: '4–8 Weeks',
-    image: '/images/adventure/sports.jpg'
+    indicativeBudget: '₹3–48 Lakh',
+    spaceRequired: '60 m²',
+    installationTime: '2 Weeks',
+    image: '/images/adventure/family.jpg',
+    keyComponents: 'Prefabricated item',
+    highlightSpecs: {
+      'Rider Capacity': '2 or 4 people versions',
+      'Footprint Area': '60 m²',
+      'Indicative Budget': '₹3–48 Lakh',
+      'Installation Timeline': '2 Weeks',
+      'Key Components': 'Prefabricated item'
+    }
+  },
+  // 20. Go Kart Arena
+  {
+    id: 'setup-20-go-kart-arena',
+    name: 'Go Kart Arena',
+    category: 'Motorsport & Racing',
+    categoryKey: 'motorsport',
+    popular: true,
+    tagline: 'Planned Circuit, Vehicles & Safety Barriers',
+    description:
+      'Build a dedicated karting destination with a planned circuit, vehicles and safety barriers.',
+    tags: ['Outdoor', 'Indoor', 'Family'],
+    indicativeBudget: '₹40–190 Lakh',
+    spaceRequired: 'Indoor 1,800–5,000 m² · Outdoor 2,000–12,000 m²',
+    installationTime: '16–36 Weeks',
+    image: '/images/adventure/motorsport.jpg',
+    keyComponents: 'Track, karts and safety barrier',
+    highlightSpecs: {
+      'Track Length': 'Indoor: 200–400 m · Outdoor: 200–1,000 m',
+      'Footprint Area': 'Indoor: 1,800–5,000 m² · Outdoor: 2,000–12,000 m²',
+      'Indicative Budget': '₹40–190 Lakh',
+      'Installation Timeline': '16–36 Weeks',
+      'Key Components': 'Track, karts and safety barrier'
+    }
+  },
+  // 21. Luge Kart Ride
+  {
+    id: 'setup-21-luge-kart-ride',
+    name: 'Luge Kart Ride',
+    category: 'Motorsport & Racing',
+    categoryKey: 'motorsport',
+    tagline: 'Downhill Mountain Gravity Kart Attraction',
+    description:
+      'Create a downhill kart attraction for suitable elevated sites and mountain destinations.',
+    tags: ['Outdoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹100 Lakh onwards',
+    spaceRequired: '3,000 m² onwards',
+    installationTime: '24 Weeks onwards',
+    image: '/images/adventure/motorsport.jpg',
+    siteNote: 'Elevation is required.',
+    keyComponents: 'Track, downhill luge karts and safety barrier',
+    highlightSpecs: {
+      'Track Length': '400 m onwards',
+      'Footprint Area': '3,000 m² onwards',
+      'Indicative Budget': '₹100 Lakh onwards',
+      'Installation Timeline': '24 Weeks onwards',
+      'Site Note': 'Elevation is required'
+    }
+  },
+  // 22. Human Maze
+  {
+    id: 'setup-22-human-maze',
+    name: 'Human Maze',
+    category: 'Games & Mazes',
+    categoryKey: 'games',
+    tagline: 'Walk-Through Labyrinth for Groups & Families',
+    description:
+      'Create a walk-through maze experience for families, groups and recreational destinations.',
+    tags: ['Outdoor', 'Indoor', 'Family', 'Kids'],
+    indicativeBudget: '₹8 Lakh onwards',
+    spaceRequired: '1,200–18,000 sq ft',
+    installationTime: '8–16 Weeks onwards',
+    image: '/images/adventure/games.jpg',
+    keyComponents: 'Prefabricated item',
+    highlightSpecs: {
+      'Maze Dimensions': '1,200–18,000 sq ft',
+      'Footprint Area': '1,200–18,000 sq ft',
+      'Indicative Budget': '₹8 Lakh onwards',
+      'Installation Timeline': '8–16 Weeks onwards',
+      'Key Components': 'Prefabricated item'
+    }
+  },
+  // 23. VR Cricket
+  {
+    id: 'setup-23-vr-cricket',
+    name: 'VR Cricket',
+    category: 'Indoor Entertainment',
+    categoryKey: 'indoor',
+    tagline: 'Immersive Cricket Entertainment Simulator',
+    description:
+      'Bring immersive cricket-based entertainment to indoor recreation and gaming spaces.',
+    tags: ['Indoor', 'Family', 'Kids'],
+    indicativeBudget: '₹12 Lakh onwards',
+    spaceRequired: '800 sq ft',
+    installationTime: '8–12 Weeks',
+    image: '/images/adventure/indoor.jpg',
+    keyComponents: 'VR hardware, motion tracking sensors and cricket simulation software',
+    highlightSpecs: {
+      'Floor Area': '800 sq ft',
+      'Indicative Budget': '₹12 Lakh onwards',
+      'Installation Timeline': '8–12 Weeks',
+      'Environment': 'Indoor recreation and gaming spaces'
+    }
+  },
+  // 24. Indoor Sky Diving
+  {
+    id: 'setup-24-indoor-sky-diving',
+    name: 'Indoor Sky Diving',
+    category: 'Indoor Entertainment',
+    categoryKey: 'indoor',
+    popular: true,
+    tagline: 'Vertical Wind-Tunnel Human Flying Attraction',
+    description:
+      'Offer a specialised indoor flying attraction using a vertical wind-tunnel setup.',
+    tags: ['Indoor', 'Extreme', 'Family'],
+    indicativeBudget: '₹250 Lakh – ₹800 Lakh',
+    spaceRequired: '900 m²',
+    installationTime: '36 Weeks onwards',
+    image: '/images/adventure/indoor.jpg',
+    siteNote: 'Prefabricated item. Chinese product: ₹250 Lakh onwards · USA product: ₹800 Lakh onwards. Confirm installation timeline with supplier.',
+    keyComponents: 'Prefabricated vertical wind-tunnel setup',
+    highlightSpecs: {
+      'Footprint Area': '900 m²',
+      'Budget Details': '₹250 Lakh onwards (Chinese) · ₹800 Lakh onwards (USA)',
+      'Installation Timeline': '36 Weeks onwards (confirm with supplier)',
+      'Key Components': 'Prefabricated item'
+    }
+  },
+  // 25. Paramotoring
+  {
+    id: 'setup-25-paramotoring',
+    name: 'Paramotoring',
+    category: 'Sky & Flying Experiences',
+    categoryKey: 'flying',
+    tagline: 'Specialised Powered-Paragliding Destination Experience',
+    description:
+      'Add a specialised powered-paragliding experience for suitable destinations and operators.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹20 Lakh onwards',
+    spaceRequired: '1,200 m² onwards',
+    installationTime: '3–4 Weeks',
+    image: '/images/adventure/flying.jpg',
+    siteNote: 'Specialised staff required.',
+    keyComponents: 'Paramotor rig, paragliding wing, safety radio and harness',
+    highlightSpecs: {
+      'Required Area': '1,200 m² onwards',
+      'Indicative Budget': '₹20 Lakh onwards',
+      'Installation Timeline': '3–4 Weeks',
+      'Staffing Note': 'Specialised staff required'
+    }
+  },
+  // 26. Micro Lite Flying
+  {
+    id: 'setup-26-micro-lite-flying',
+    name: 'Micro Lite Flying',
+    category: 'Sky & Flying Experiences',
+    categoryKey: 'flying',
+    tagline: 'Specialised Aviation Flight Recreation for Venues',
+    description:
+      'Introduce a specialised aviation experience for destinations with suitable operating facilities.',
+    tags: ['Outdoor', 'Extreme'],
+    indicativeBudget: '₹40 Lakh onwards',
+    spaceRequired: '1,200 m² onwards',
+    installationTime: '3–4 Weeks',
+    image: '/images/adventure/flying.jpg',
+    siteNote: 'Specialised staff required.',
+    keyComponents: 'Microlight aircraft, airstrip / runway layout and flight safety gear',
+    highlightSpecs: {
+      'Required Area': '1,200 m² onwards',
+      'Indicative Budget': '₹40 Lakh onwards',
+      'Installation Timeline': '3–4 Weeks',
+      'Staffing Note': 'Specialised staff required'
+    }
   }
 ];
 
 export const AdventureSetupView: React.FC = () => {
   const { showToast } = useApp();
-
-  // Category filter state for Section 2
-  const [activeCategoryTab, setActiveCategoryTab] = useState<string>('all');
 
   // Catalogue Filters
   const [selectedTag, setSelectedTag] = useState<'All' | 'Indoor' | 'Outdoor' | 'Kids' | 'Extreme' | 'Family'>('All');
@@ -776,12 +958,6 @@ export const AdventureSetupView: React.FC = () => {
     setFormSubmitted(true);
     showToast('Project enquiry received! Our adventure setup director will contact you within 24 hours.');
   };
-
-  // Filtered Categories for Section 2
-  const filteredCategories = useMemo(() => {
-    if (activeCategoryTab === 'all') return ADVENTURE_CATEGORIES;
-    return ADVENTURE_CATEGORIES.filter((c) => c.key === activeCategoryTab);
-  }, [activeCategoryTab]);
 
   // Filtered Catalogue
   const filteredCatalogue = useMemo(() => {
@@ -855,7 +1031,7 @@ export const AdventureSetupView: React.FC = () => {
                 </button>
 
                 <button
-                  onClick={() => scrollToSection('explore-experiences')}
+                  onClick={() => scrollToSection('setup-catalogue')}
                   className="px-6 py-4 bg-white/10 hover:bg-white/15 text-white text-sm font-bold rounded-2xl border border-white/20 transition-colors flex items-center gap-2 cursor-pointer backdrop-blur-sm"
                 >
                   <span>Explore Attractions</span>
@@ -869,8 +1045,8 @@ export const AdventureSetupView: React.FC = () => {
                     <Award className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="font-display text-lg font-black text-white block leading-tight">100+</span>
-                    <span className="text-[11px] text-neutral-400 block">Attractions</span>
+                    <span className="font-display text-lg font-black text-white block leading-tight">26+</span>
+                    <span className="text-[11px] text-neutral-400 block">Turnkey Setups</span>
                   </div>
                 </div>
 
@@ -951,7 +1127,7 @@ export const AdventureSetupView: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 {/* Visual 1: Aerial Zipline */}
                 <div
-                  onClick={() => scrollToSection('explore-experiences')}
+                  onClick={() => scrollToSection('setup-catalogue')}
                   className="relative rounded-2xl overflow-hidden border border-white/15 h-36 group shadow-xl bg-neutral-900 cursor-pointer"
                 >
                   <SafeImage
@@ -974,7 +1150,7 @@ export const AdventureSetupView: React.FC = () => {
 
                 {/* Visual 2: Motorsport Karting */}
                 <div
-                  onClick={() => scrollToSection('explore-experiences')}
+                  onClick={() => scrollToSection('setup-catalogue')}
                   className="relative rounded-2xl overflow-hidden border border-white/15 h-36 group shadow-xl bg-neutral-900 cursor-pointer"
                 >
                   <SafeImage
@@ -1001,167 +1177,9 @@ export const AdventureSetupView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          2. ADVENTURE CATEGORIES (REDESIGNED PREMIUM EXPERIENCE CARDS)
+          2. FEATURED ADVENTURE SETUPS (FLAGSHIP ARCHITECTURAL SHOWCASE)
           ========================================================================= */}
-      <section id="explore-experiences" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBECE7] text-xs uppercase font-extrabold tracking-widest text-[#556B2F] mb-2">
-            <Compass className="w-3.5 h-3.5" />
-            <span>Complete Setup Spectrum</span>
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B0D0C] mt-2">
-            Explore Adventure Experiences
-          </h2>
-          <p className="text-sm text-neutral-600 mt-3 leading-relaxed">
-            Every attraction is engineered to international standards, configured to your destination topography, and built to create repeat visitor footfall.
-          </p>
-        </div>
-
-        {/* Category Filter Pills */}
-        <div className="flex items-center justify-center gap-2 mb-12 overflow-x-auto no-scrollbar pb-2">
-          <button
-            onClick={() => setActiveCategoryTab('all')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-              activeCategoryTab === 'all'
-                ? 'bg-[#0B0D0C] text-white shadow-md'
-                : 'bg-white text-neutral-600 hover:text-black border border-neutral-200'
-            }`}
-          >
-            All Categories ({ADVENTURE_CATEGORIES.length})
-          </button>
-          {ADVENTURE_CATEGORIES.map((c) => {
-            const Icon = c.icon;
-            return (
-              <button
-                key={c.key}
-                onClick={() => setActiveCategoryTab(c.key)}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  activeCategoryTab === c.key
-                    ? 'bg-[#556B2F] text-white shadow-md'
-                    : 'bg-white text-neutral-600 hover:text-black border border-neutral-200'
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{c.name.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* 10 Redesigned Category Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredCategories.map((cat) => {
-            const IconComponent = cat.icon;
-            return (
-              <div
-                key={cat.key}
-                className="group relative bg-white rounded-3xl border border-neutral-200/90 shadow-sm hover:shadow-2xl hover:border-neutral-300 transition-all duration-300 hover:-translate-y-1.5 flex flex-col overflow-hidden"
-              >
-                {/* Visual Header */}
-                <div className="relative h-60 sm:h-64 w-full overflow-hidden bg-neutral-900 shrink-0">
-                  <SafeImage
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                  />
-                  {/* Cinematic gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B0D0C] via-[#0B0D0C]/40 to-transparent" />
-
-                  {/* Top Bar Floating Badges */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0B0D0C]/70 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-md">
-                      <IconComponent className="w-4 h-4 text-[#F97316]" />
-                      <span>{cat.name}</span>
-                    </div>
-
-                    <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-extrabold tracking-wide shadow-sm">
-                      {cat.attractions.length} Attractions
-                    </span>
-                  </div>
-
-                  {/* Bottom Text Over Image */}
-                  <div className="absolute bottom-4 left-5 right-5 text-white">
-                    <h3 className="font-display text-2xl font-black text-white tracking-tight leading-tight group-hover:text-amber-300 transition-colors">
-                      {cat.name}
-                    </h3>
-                    <p className="text-xs text-neutral-200/90 font-normal line-clamp-1 mt-1">
-                      {cat.highlights}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between bg-white">
-                  <div>
-                    <p className="text-xs text-neutral-600 leading-relaxed min-h-[38px]">
-                      {cat.subtitle}
-                    </p>
-
-                    {/* Interactive Setup Chips */}
-                    <div className="mt-4 pt-4 border-t border-neutral-100">
-                      <div className="flex items-center justify-between mb-2.5">
-                        <span className="text-[11px] font-black uppercase text-neutral-400 tracking-wider">
-                          Key Attractions
-                        </span>
-                        <span className="text-[11px] font-bold text-[#556B2F]">
-                          Turnkey Rigging
-                        </span>
-                      </div>
-
-                      <div className="flex flex-wrap gap-1.5">
-                        {cat.attractions.slice(0, 6).map((att, i) => (
-                          <span
-                            key={i}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F4F5F0] hover:bg-[#0B0D0C] hover:text-white text-neutral-800 text-[11px] font-semibold rounded-lg transition-colors duration-200 cursor-pointer"
-                            onClick={() => {
-                              setSelectedCategoryKey(cat.key);
-                              setSearchQuery(att);
-                              scrollToSection('setup-catalogue');
-                            }}
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#556B2F] shrink-0" />
-                            <span>{att}</span>
-                          </span>
-                        ))}
-                        {cat.attractions.length > 6 && (
-                          <span
-                            onClick={() => {
-                              setSelectedCategoryKey(cat.key);
-                              scrollToSection('setup-catalogue');
-                            }}
-                            className="inline-flex items-center px-2.5 py-1 bg-[#FFF7ED] text-[#F97316] text-[11px] font-bold rounded-lg cursor-pointer hover:bg-[#FFEDD5] transition-colors"
-                          >
-                            +{cat.attractions.length - 6} more setups
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card Action Button */}
-                  <div className="mt-6 pt-4 border-t border-neutral-100">
-                    <button
-                      onClick={() => {
-                        setSelectedCategoryKey(cat.key);
-                        scrollToSection('setup-catalogue');
-                      }}
-                      className="w-full py-3 px-4 bg-[#0B0D0C] group-hover:bg-[#F97316] text-white text-xs font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-orange-500/25 cursor-pointer"
-                    >
-                      <span>{cat.cta}</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* =========================================================================
-          3. FEATURED ADVENTURE SETUPS (FLAGSHIP ARCHITECTURAL SHOWCASE)
-          ========================================================================= */}
-      <section className="py-24 bg-white border-y border-neutral-200/80">
+      <section id="featured-setups" className="py-24 bg-white border-y border-neutral-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
             <div>
@@ -1264,7 +1282,7 @@ export const AdventureSetupView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          4. HOW WE BUILD (From Concept to Adventure Park)
+          3. HOW WE BUILD (From Concept to Adventure Park)
           ========================================================================= */}
       <section className="py-24 bg-[#0B0D0C] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
@@ -1346,20 +1364,20 @@ export const AdventureSetupView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          5. ADVENTURE SETUP CATALOGUE (Comprehensive Specification Explorer)
+          4. ADVENTURE SETUP CATALOGUE (Comprehensive Specification Explorer)
           ========================================================================= */}
       <section id="setup-catalogue" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBECE7] text-xs uppercase font-extrabold tracking-widest text-[#556B2F]">
               <Layers className="w-3.5 h-3.5" />
-              <span>Full Attractions Catalogue</span>
+              <span>26 Turnkey Adventure Setups</span>
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B0D0C] mt-2">
               Adventure Setup Catalogue
             </h2>
             <p className="text-sm text-neutral-600 mt-2 max-w-2xl">
-              Browse our attractions directory. Filter by category, indoor/outdoor feasibility, target audience or adrenaline level.
+              Browse all 26 purpose-built adventure attractions from ziplines and bungee to karting and flight simulators. Filter by environment, category, or budget.
             </p>
           </div>
 
@@ -1467,10 +1485,15 @@ export const AdventureSetupView: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-                  <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1">
+                  <div className="absolute top-3.5 left-3.5 flex flex-wrap gap-1.5 items-center">
                     <span className="bg-[#0B0D0C]/85 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
                       {item.category}
                     </span>
+                    {item.popular && (
+                      <span className="bg-amber-400 text-black text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+                        Popular
+                      </span>
+                    )}
                   </div>
                   <div className="absolute top-3.5 right-3.5 flex gap-1">
                     {item.tags.map((t) => (
@@ -1503,13 +1526,20 @@ export const AdventureSetupView: React.FC = () => {
                     <div className="mt-4 pt-3 border-t border-neutral-100 grid grid-cols-2 gap-2 text-[11px]">
                       <div>
                         <span className="text-neutral-400 block uppercase text-[9px] font-bold">Space Needed</span>
-                        <span className="font-bold text-neutral-800">{item.spaceRequired}</span>
+                        <span className="font-bold text-neutral-800 line-clamp-1">{item.spaceRequired}</span>
                       </div>
                       <div>
                         <span className="text-neutral-400 block uppercase text-[9px] font-bold">Timeline</span>
-                        <span className="font-bold text-neutral-800">{item.installationTime}</span>
+                        <span className="font-bold text-neutral-800 line-clamp-1">{item.installationTime}</span>
                       </div>
                     </div>
+
+                    {item.keyComponents && (
+                      <div className="mt-2.5 pt-2 border-t border-neutral-100 text-[11px]">
+                        <span className="text-neutral-400 block uppercase text-[9px] font-bold">Key Components</span>
+                        <span className="text-neutral-700 font-medium line-clamp-1">{item.keyComponents}</span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-5 pt-4 border-t border-neutral-100 flex items-center justify-between">
@@ -1537,7 +1567,7 @@ export const AdventureSetupView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          6. GET A PROJECT QUOTE / PROJECT CONSULTATION FORM
+          5. GET A PROJECT QUOTE / PROJECT CONSULTATION FORM
           ========================================================================= */}
       <section id="project-quote" className="py-24 bg-[#F3F4F0] border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1767,10 +1797,10 @@ export const AdventureSetupView: React.FC = () => {
                           'Extreme Thrills',
                           'Climbing & Ropes',
                           'Motorsport & Racing',
-                          'Games & Combat',
+                          'Games & Mazes',
                           'Family & Kids',
-                          'Nature & Campsites',
-                          'Indoor Entertainment'
+                          'Indoor Entertainment',
+                          'Sky & Flying Experiences'
                         ].map((interest) => (
                           <button
                             type="button"
@@ -1882,7 +1912,24 @@ export const AdventureSetupView: React.FC = () => {
                     <span className="font-black text-[#556B2F]">{selectedAttraction.indicativeBudget}</span>
                   </div>
                 </div>
+
+                {selectedAttraction.highlightSpecs && (
+                  <div className="pt-3 border-t border-neutral-200 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                    {Object.entries(selectedAttraction.highlightSpecs).map(([label, val]) => (
+                      <div key={label} className="bg-white p-3 rounded-xl border border-neutral-200/80">
+                        <span className="text-[10px] text-neutral-400 block uppercase font-bold">{label}</span>
+                        <span className="font-bold text-neutral-800 text-xs mt-0.5 block">{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
+
+              {selectedAttraction.siteNote && (
+                <div className="text-[11px] text-blue-900 bg-blue-50 border border-blue-200 p-4 rounded-2xl leading-relaxed">
+                  <strong className="text-blue-950">Site Requirement Note:</strong> {selectedAttraction.siteNote}
+                </div>
+              )}
 
               <div className="text-[11px] text-neutral-600 bg-amber-50 border border-amber-200 p-4 rounded-2xl leading-relaxed">
                 <strong className="text-amber-900">Note:</strong> The investment figures are presented as “Indicative Budget”. Final quotations depend on topographical soil bearing, span clearances, anchor requirements and custom destination capacity.
