@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { BookingDetails } from '../types';
 import { formatINR } from '../utils/format';
+import { SafeImage } from './SafeImage';
 import {
   X,
   CheckCircle2,
@@ -525,9 +526,16 @@ export const BookingModal: React.FC = () => {
                   href={`https://wa.me/919711720218?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-6 py-3 bg-[#25D366] hover:bg-[#1ebd5a] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  className="px-6 py-3 bg-[#25D366] hover:bg-[#1ebd5a] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-md group"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <div className="relative w-6 h-6 rounded-full overflow-hidden border border-white/60 shrink-0">
+                    <SafeImage
+                      src="/images/avatar/guide-avatar.jpg"
+                      alt="Guide Avatar"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white animate-ping" />
+                  </div>
                   <span>Enquire on WhatsApp</span>
                 </a>
 

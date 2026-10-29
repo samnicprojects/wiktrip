@@ -16,6 +16,8 @@ import {
 } from '../data/mockData';
 import { SafeImage } from '../components/SafeImage';
 import { HeroBanner } from '../components/HeroBanner';
+import { SetupSpec } from '../types';
+import { FEATURED_SETUPS } from './AdventureSetupView';
 import {
   Compass,
   MapPin,
@@ -26,6 +28,7 @@ import {
   Star,
   ShieldCheck,
   Mountain,
+  Award,
   Tent,
   ShoppingBag,
   BookOpen,
@@ -88,6 +91,11 @@ export const HomeView: React.FC = () => {
   const [featuredTab, setFeaturedTab] = useState<
     'Stay' | 'Tours' | 'Trekking' | 'Camping' | 'Adventure' | 'Events' | 'Rentals' | 'Travel Products' | 'Learning'
   >('Tours');
+
+  // Interactive Adventure Setup Concierge State
+  const [setupType, setSetupType] = useState('Zipline Flight');
+  const [setupLocation, setSetupLocation] = useState('Manali, Himachal Pradesh');
+  const [setupPose, setSetupPose] = useState<'standing' | 'climbing'>('standing');
 
   // 7. UPCOMING EVENTS: Hornbill Music Festival Campsite Spotlight State
   const [hornbillTent, setHornbillTent] = useState<'premium' | 'dome' | 'pitch'>('premium');
@@ -171,6 +179,50 @@ export const HomeView: React.FC = () => {
     if (event) {
       openDetail('event', event);
     }
+  };
+
+  const handleBookAdventureSetup = (setup: SetupSpec) => {
+    openBooking({
+      type: 'adventure',
+      id: setup.id,
+      title: `${setup.name} — Turnkey Adventure Setup Service (${setup.indicativeBudget})`,
+      location: 'Pan-India Turnkey Site Installation & Rigging',
+      price: 25000,
+      image: setup.image
+    });
+  };
+
+  const handleGoToAdventureLanding = () => {
+    setCurrentPage('adventure');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const getSetupSpeech = () => {
+    switch (setupType) {
+      case 'Bungee Jump':
+        return 'Flagship 40m–150m gravity thrills. The #1 tourist footfall magnet for high ROI!';
+      case 'High Ropes Course':
+        return 'Multi-tier aerial obstacle courses with continuous zero-unhook safety lifelines.';
+      case 'Go-Kart Track':
+        return 'Turnkey racing circuits with FIA-grade impact barriers, lap timing & kart fleets.';
+      case 'Glass Skywalk':
+        return 'Cantilevered toughened glass skywalks with dramatic valley views and viral footfall!';
+      case 'Climbing Wall':
+        return 'Modular indoor & outdoor climbing towers with pneumatic auto-belays and safety padding.';
+      default:
+        return 'Dual military-spec steel cables with magnetic eddy-current brakes up to 500m. 100% EN certified!';
+    }
+  };
+
+  const handleSetupWhatsApp = () => {
+    const loc = setupLocation.trim() ? ` at ${setupLocation}` : '';
+    const msg = `Hello Wiktrip Adventure Setup Desk! I am interested in building a ${setupType}${loc}. Please share indicative turnkey costs and a site feasibility blueprint.`;
+    window.open(`https://wa.me/919711720218?text=${encodeURIComponent(msg)}`, '_blank');
+  };
+
+  const handleSetupSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSetupWhatsApp();
   };
 
   const handleHeroSearch = (e: React.FormEvent) => {
@@ -277,6 +329,196 @@ export const HomeView: React.FC = () => {
           SECTION 1: HERO BANNER (DEDICATED COMPONENT)
           ========================================================================= */}
       <HeroBanner />
+
+      {/* =========================================================================
+          SECTION 1B: ADVENTURE SETUP BOOKING SERVICES
+          Turnkey Park & Destination Engineering Services with "View More" Redirect
+          ========================================================================= */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#F3F4F0] via-[#F8F9F6] to-[#F8F9F6] border-b border-neutral-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#556B2F]/15 border border-[#556B2F]/30 text-xs font-bold uppercase tracking-wider text-[#556B2F] mb-3">
+                <Mountain className="w-3.5 h-3.5 text-[#F97316]" />
+                <span>Turnkey Destination Engineering & Setup Services</span>
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B0D0C] tracking-tight">
+                Adventure Setup Booking Services
+              </h2>
+              <p className="text-sm sm:text-base text-neutral-600 mt-2.5 max-w-2xl leading-relaxed">
+                Build high-footfall, highly profitable adventure attractions on your land, resort, campsite, or tourism destination. Turnkey booking solutions with certified safety, rigging, and operator training.
+              </p>
+            </div>
+
+            {/* Quick Header View More Button */}
+            <div className="flex items-center gap-3 shrink-0">
+              <button
+                onClick={handleGoToAdventureLanding}
+                className="inline-flex items-center gap-2 px-5 py-3 bg-[#0B0D0C] hover:bg-[#F97316] text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition-all duration-300 group cursor-pointer"
+              >
+                <span>View More Services</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Value Pillars Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            <div className="bg-white p-3.5 rounded-2xl border border-neutral-200/90 shadow-xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-[#556B2F]/10 text-[#556B2F] flex items-center justify-center shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-extrabold text-[#0B0D0C] block leading-tight">26+ Turnkey Setups</span>
+                <span className="text-[10px] text-neutral-500 block">Aerial, Ground & Indoor</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3.5 rounded-2xl border border-neutral-200/90 shadow-xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-extrabold text-[#0B0D0C] block leading-tight">EN / ASTM Certified</span>
+                <span className="text-[10px] text-neutral-500 block">100% International Safety</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3.5 rounded-2xl border border-neutral-200/90 shadow-xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-[#F97316]/10 text-[#F97316] flex items-center justify-center shrink-0">
+                <Zap className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-extrabold text-[#0B0D0C] block leading-tight">Fast ROI & Payback</span>
+                <span className="text-[10px] text-neutral-500 block">High Visitor Footfall</span>
+              </div>
+            </div>
+
+            <div className="bg-white p-3.5 rounded-2xl border border-neutral-200/90 shadow-xs flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-extrabold text-[#0B0D0C] block leading-tight">Pan-India Delivery</span>
+                <span className="text-[10px] text-neutral-500 block">Civil, Rigging & Training</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {FEATURED_SETUPS.map((setup) => (
+              <div
+                key={setup.id}
+                className="bg-white rounded-3xl border border-neutral-200/90 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col group hover:-translate-y-1.5"
+              >
+                {/* Visual Header */}
+                <div className="relative h-56 w-full overflow-hidden bg-neutral-900">
+                  <SafeImage
+                    src={setup.image}
+                    alt={setup.name}
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+
+                  {/* Top Badges */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
+                    <span className="bg-[#0B0D0C]/85 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-lg border border-white/10 shadow-sm">
+                      {setup.category}
+                    </span>
+                    {setup.popular && (
+                      <span className="bg-amber-400 text-black text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
+                        <Sparkles className="w-3 h-3" />
+                        <span>High Demand</span>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Title overlay */}
+                  <div className="absolute bottom-3.5 left-4 right-4 text-white">
+                    {setup.tagline && (
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-amber-300 block">
+                        {setup.tagline}
+                      </span>
+                    )}
+                    <h3 className="font-display text-xl sm:text-2xl font-black tracking-tight text-white mt-0.5">
+                      {setup.name}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Card Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed">
+                      {setup.description}
+                    </p>
+
+                    {/* Spec Highlights Matrix */}
+                    <div className="mt-4 p-3.5 bg-[#F8F9F6] rounded-2xl border border-neutral-200/80 grid grid-cols-2 gap-2 text-left">
+                      <div>
+                        <span className="text-[9px] uppercase font-bold text-neutral-400 block tracking-wider">
+                          Space Required
+                        </span>
+                        <span className="text-xs font-bold text-[#0B0D0C] block mt-0.5 truncate">
+                          {setup.spaceRequired}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] uppercase font-bold text-neutral-400 block tracking-wider">
+                          Setup Timeline
+                        </span>
+                        <span className="text-xs font-bold text-[#0B0D0C] block mt-0.5 truncate">
+                          {setup.installationTime}
+                        </span>
+                      </div>
+                      <div className="col-span-2 pt-2 border-t border-neutral-200/60 flex items-center justify-between">
+                        <span className="text-[10px] text-neutral-500 font-medium">
+                          Safety Rigging & Certification
+                        </span>
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded">
+                          EN / ASTM Standards
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Price & Actions */}
+                  <div className="mt-6 pt-5 border-t border-neutral-100 flex items-center justify-between gap-3">
+                    <div>
+                      <span className="text-[9px] text-neutral-400 uppercase font-bold tracking-wider block">
+                        Turnkey Setup Budget
+                      </span>
+                      <span className="font-display text-lg sm:text-xl font-black text-[#556B2F]">
+                        {setup.indicativeBudget}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleGoToAdventureLanding}
+                        className="px-3 py-2 text-xs font-bold text-neutral-600 hover:text-black transition-colors cursor-pointer"
+                        title="View Full Technical Specifications"
+                      >
+                        Specs
+                      </button>
+
+                      <button
+                        onClick={() => handleBookAdventureSetup(setup)}
+                        className="px-4 py-2.5 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold rounded-xl shadow-md hover:shadow-orange-500/25 transition-all flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <span>Book Setup</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* =========================================================================
           SECTION 2: UPCOMING EVENTS & HORNBILL CAMPSITE SPOTLIGHT (OFFICIAL CAMPSITE SETTING)
@@ -1114,9 +1356,16 @@ export const HomeView: React.FC = () => {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 shadow-sm"
+                  className="px-4 py-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-2 shadow-sm group"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <div className="relative w-6 h-6 rounded-full overflow-hidden border border-white/60 shrink-0">
+                    <SafeImage
+                      src="/images/avatar/guide-avatar.jpg"
+                      alt="Guide Avatar"
+                      className="w-full h-full object-cover object-top"
+                    />
+                    <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white animate-ping" />
+                  </div>
                   <span>WhatsApp: 9711720218</span>
                 </a>
               </div>
@@ -1722,6 +1971,199 @@ export const HomeView: React.FC = () => {
       </section>
 
       {/* =========================================================================
+          SECTION 3B: INTERACTIVE ADVENTURE SETUP CONCIERGE & FEASIBILITY PLANNER
+          Featuring full 3D Guide/Engineer character guiding B2B turnkey setup inquiries
+          ========================================================================= */}
+      <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl sm:rounded-[36px] bg-gradient-to-br from-[#121614] via-[#1a221d] to-[#0c0f0d] border border-white/15 shadow-2xl overflow-hidden p-6 sm:p-10 lg:p-12 text-white">
+          {/* Ambient lighting blur orbs */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#25D366]/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-0 left-10 w-96 h-96 bg-[#F97316]/15 rounded-full blur-[140px] pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Full Character Showcase with Speech Bubble and Floating Badges */}
+            <div className="lg:col-span-5 flex flex-col items-center text-center">
+              {/* Dynamic Interactive Speech Bubble */}
+              <div className="relative mb-4 bg-white text-[#0B0D0C] p-4 rounded-2xl rounded-bl-none shadow-xl border border-neutral-200 text-xs sm:text-sm font-semibold max-w-sm animate-in fade-in duration-300">
+                <div className="flex items-start gap-2.5">
+                  <span className="text-lg shrink-0">🛠️</span>
+                  <p className="leading-snug text-left text-neutral-800">
+                    {getSetupSpeech()}
+                  </p>
+                </div>
+                {/* Speech tail */}
+                <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white rotate-45 border-r border-b border-neutral-200" />
+              </div>
+
+              {/* Full Character Image with Glowing Mountain/Engineering Stage */}
+              <div className="relative w-full max-w-[340px] sm:max-w-[380px] h-[460px] sm:h-[520px] flex items-center justify-center">
+                {/* Atmospheric circular stage gradient */}
+                <div className="absolute bottom-4 inset-x-8 h-24 bg-gradient-to-t from-[#556B2F]/40 to-transparent rounded-full blur-xl pointer-events-none" />
+
+                <SafeImage
+                  src={
+                    setupPose === 'climbing' || setupType === 'Climbing Wall' || setupType === 'Bungee Jump'
+                      ? '/images/avatar/guide-avatar-climb.jpg'
+                      : '/images/avatar/guide-avatar.jpg'
+                  }
+                  alt="Wiktrip Adventure Setup Specialist"
+                  className="w-full h-full object-contain relative z-10 drop-shadow-[0_20px_35px_rgba(0,0,0,0.7)] transition-all duration-500 hover:scale-103"
+                />
+
+                {/* Floating Badge 1: Response Time */}
+                <div className="absolute top-8 left-0 sm:-left-2 z-20 bg-black/85 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                  <span>15-Min Feasibility Reply</span>
+                </div>
+
+                {/* Floating Badge 2: Certified Engineering */}
+                <div className="absolute bottom-16 right-0 sm:-right-2 z-20 bg-[#556B2F]/90 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-[11px] font-bold flex items-center gap-1.5 shadow-lg">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-300" />
+                  <span>EN / ASTM Safety Certified</span>
+                </div>
+              </div>
+
+              {/* Character View Switcher */}
+              <div className="flex items-center gap-2 mt-3 p-1.5 bg-white/10 rounded-xl border border-white/10 backdrop-blur-sm">
+                <span className="text-[10px] uppercase font-bold text-neutral-400 px-2">Character View:</span>
+                <button
+                  type="button"
+                  onClick={() => setSetupPose('standing')}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    setupPose === 'standing'
+                      ? 'bg-[#F97316] text-white shadow-sm'
+                      : 'text-neutral-300 hover:text-white'
+                  }`}
+                >
+                  Site Engineer 📐
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSetupPose('climbing')}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    setupPose === 'climbing'
+                      ? 'bg-[#25D366] text-white shadow-sm'
+                      : 'text-neutral-300 hover:text-white'
+                  }`}
+                >
+                  Rigging & Safety 🧗
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Sleek & Simple Adventure Setup Builder */}
+            <div className="lg:col-span-7 bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-md">
+              <div className="mb-5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#25D366]/15 border border-[#25D366]/30 text-xs font-bold uppercase tracking-wider text-[#25D366] mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                  <span>Turnkey Adventure Setup</span>
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  Build Your Adventure Attraction
+                </h3>
+                <p className="text-xs sm:text-sm text-neutral-300 mt-1">
+                  Select an attraction to receive turnkey cost breakdown & site feasibility blueprints.
+                </p>
+              </div>
+
+              <form onSubmit={handleSetupSubmit} className="space-y-5">
+                {/* 1. What to build? */}
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2.5">
+                    What would you like to build?
+                  </label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                    {[
+                      { id: 'Ziplines', label: 'Zipline Flight', icon: '🦅' },
+                      { id: 'Bungee', label: 'Bungee Jump', icon: '🪂' },
+                      { id: 'High Ropes', label: 'High Ropes Course', icon: '🧗' },
+                      { id: 'Go-Kart', label: 'Go-Kart Track', icon: '🏎️' },
+                      { id: 'Glass Skywalk', label: 'Glass Skywalk', icon: '🌉' },
+                      { id: 'Climbing Wall', label: 'Climbing Wall', icon: '🧗‍♂️' }
+                    ].map((v) => (
+                      <button
+                        key={v.id}
+                        type="button"
+                        onClick={() => {
+                          setSetupType(v.label);
+                          if (v.id === 'Climbing Wall' || v.id === 'Bungee') {
+                            setSetupPose('climbing');
+                          } else {
+                            setSetupPose('standing');
+                          }
+                        }}
+                        className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-center gap-2.5 ${
+                          setupType === v.label
+                            ? 'bg-[#F97316] border-[#F97316] text-white shadow-lg shadow-orange-500/20 font-bold scale-[1.02]'
+                            : 'bg-white/5 border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white font-medium'
+                        }`}
+                      >
+                        <span className="text-xl shrink-0">{v.icon}</span>
+                        <span className="text-xs font-bold truncate">{v.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Site Location Input */}
+                <div>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
+                    Your Property Location:
+                  </label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3.5 top-3.5 w-4 h-4 text-[#F97316]" />
+                    <input
+                      type="text"
+                      value={setupLocation}
+                      onChange={(e) => setSetupLocation(e.target.value)}
+                      placeholder="e.g. Manali, Lonavala, Munnar, Goa, Rishikesh..."
+                      className="w-full bg-[#1F2321] border border-white/15 rounded-2xl pl-10 pr-4 py-3 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-[#25D366] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* 3. High-Impact WhatsApp Action Button */}
+                <div className="pt-1">
+                  <button
+                    type="button"
+                    onClick={handleSetupWhatsApp}
+                    className="w-full py-4 px-6 bg-[#25D366] hover:bg-[#20ba59] text-white text-sm sm:text-base font-black rounded-2xl shadow-xl shadow-emerald-500/25 transition-all flex items-center justify-center gap-3 cursor-pointer group hover:scale-[1.01] active:scale-95"
+                  >
+                    <div className="relative w-7 h-7 rounded-full overflow-hidden border-2 border-white shrink-0">
+                      <SafeImage
+                        src="/images/avatar/guide-avatar.jpg"
+                        alt="Adventure Setup Engineer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-white animate-ping" />
+                    </div>
+                    <span>Get Turnkey Setup Cost & Feasibility on WhatsApp</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* 4. Minimal Footer */}
+                <div className="pt-2 flex items-center justify-between border-t border-white/10 text-xs text-neutral-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+                    <span>Free 3D Layout & Feasibility Report</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGoToAdventureLanding}
+                    className="text-amber-400 hover:text-amber-300 font-bold inline-flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <span>Explore 26+ Setups</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
           SECTION 4: EXPLORE BY CATEGORY
           ========================================================================= */}
       <section className="py-20 bg-[#F3F4F0] border-y border-neutral-200/60">
@@ -2023,98 +2465,6 @@ export const HomeView: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 8: PERMANENT ADVENTURE
-          ========================================================================= */}
-      <section className="py-20 bg-[#161917] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="text-xs uppercase font-bold tracking-widest text-[#F97316]">
-                Engineered Adrenaline Setups
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-black text-white mt-1">
-                Adventure Starts Here
-              </h2>
-              <p className="text-sm text-neutral-300 mt-2 max-w-2xl">
-                Tyre Climbing Wall, Rope Courses, Zipline, Rocket Ejector, Artificial Rappelling Wall, and Artificial Wall Climbing with verified safety standards.
-              </p>
-            </div>
-            <button
-              onClick={() => setCurrentPage('adventure')}
-              className="text-sm font-bold text-[#F97316] hover:text-white flex items-center gap-1 group cursor-pointer"
-            >
-              <span>Explore All Activities</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {ADVENTURE_ACTIVITIES_DATA.slice(0, 3).map((act) => (
-              <div
-                key={act.id}
-                className="bg-[#1F2321] rounded-2xl overflow-hidden border border-white/10 hover:border-white/20 transition-all flex flex-col group shadow-lg"
-              >
-                <div className="relative h-60 w-full overflow-hidden">
-                  <SafeImage
-                    src={act.image}
-                    alt={act.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#556B2F] text-white text-[11px] font-bold px-2.5 py-1 rounded">
-                      {act.difficulty}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
-                    <span className="bg-black/60 px-2.5 py-1 rounded backdrop-blur-sm">
-                      {act.location}
-                    </span>
-                    <span className="text-neutral-300">{act.duration}</span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-white group-hover:text-[#F97316] transition-colors">
-                      {act.name}
-                    </h3>
-                    <p className="text-xs text-neutral-400 mt-2 line-clamp-2">{act.description}</p>
-                    <div className="mt-3 text-[11px] text-[#556B2F] flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>{act.safetyInfo?.[0] || 'Certified Safe Setup'}</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 mt-6 border-t border-white/10 flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] text-neutral-400 block uppercase">Activity Fee</span>
-                      <span className="font-display text-xl font-black text-white">
-                        ₹{formatINR(act.price)}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() =>
-                        openBooking({
-                          type: 'adventure',
-                          id: act.id,
-                          title: act.name,
-                          location: act.location,
-                          price: act.price
-                        })
-                      }
-                      className="px-4 py-2 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
-                    >
-                      Enquire Activity
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
           SECTION 8B: ADVENTURE SETUP — BUILD YOUR OWN ADVENTURE DESTINATION
           (Wiktrip Flagship B2B Adventure Park Engineering & Development)
           ========================================================================= */}
@@ -2154,9 +2504,16 @@ export const HomeView: React.FC = () => {
                 href="https://wa.me/919711720218?text=Hello%20Wiktrip%2C%20I%20have%20land%2Fresort%20property%20and%20want%20to%20consult%20about%20an%20Adventure%20Setup."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3.5 bg-[#1F2321] hover:bg-[#2A302D] text-white text-xs sm:text-sm font-semibold rounded-xl border border-white/10 transition-colors flex items-center gap-2 cursor-pointer"
+                className="px-5 py-3.5 bg-[#1F2321] hover:bg-[#2A302D] text-white text-xs sm:text-sm font-semibold rounded-xl border border-white/10 transition-colors flex items-center gap-2.5 cursor-pointer group"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <div className="relative w-6 h-6 rounded-full overflow-hidden border border-[#25D366] shrink-0">
+                  <SafeImage
+                    src="/images/avatar/guide-avatar-climb.jpg"
+                    alt="Adventure Engineer Avatar"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
+                </div>
                 <span className="hidden sm:inline">WhatsApp Direct</span>
               </a>
             </div>
@@ -2409,9 +2766,16 @@ export const HomeView: React.FC = () => {
                 href="https://wa.me/919711720218?text=Hello%20Wiktrip%2C%20I%20want%20to%20consult%20about%20an%20Adventure%20Setup%20for%20my%20property."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-xl border border-white/15 transition-colors flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-xl border border-white/15 transition-colors flex items-center justify-center gap-2.5 group"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <div className="relative w-6 h-6 rounded-full overflow-hidden border border-[#25D366] shrink-0">
+                  <SafeImage
+                    src="/images/avatar/guide-avatar-climb.jpg"
+                    alt="Adventure Engineer Avatar"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
+                </div>
                 <span>Chat on WhatsApp</span>
               </a>
             </div>

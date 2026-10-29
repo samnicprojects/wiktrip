@@ -292,3 +292,21 @@ export interface BookingDetails {
   status: 'Enquiry Received' | 'Quote Shared' | 'Executive Assigned' | 'Confirmed' | 'Pending';
   createdAt: string;
 }
+
+export interface SetupSpec {
+  id: string;
+  name: string;
+  category: string;
+  categoryKey: string;
+  tagline?: string;
+  description: string;
+  tags: ('Indoor' | 'Outdoor' | 'Kids' | 'Extreme' | 'Family')[];
+  indicativeBudget: string;
+  spaceRequired: string;
+  installationTime: string;
+  image: string;
+  popular?: boolean;
+  keyComponents?: string;
+  siteNote?: string;
+  highlightSpecs?: { [key: string]: string };
+}

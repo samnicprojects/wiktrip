@@ -35,26 +35,11 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 
-interface SetupSpec {
-  id: string;
-  name: string;
-  category: string;
-  categoryKey: string;
-  tagline: string;
-  description: string;
-  tags: ('Indoor' | 'Outdoor' | 'Kids' | 'Extreme' | 'Family')[];
-  indicativeBudget: string;
-  spaceRequired: string;
-  installationTime: string;
-  image: string;
-  popular?: boolean;
-  keyComponents?: string;
-  siteNote?: string;
-  highlightSpecs?: { [key: string]: string };
-}
+import { SetupSpec } from '../types';
+export type { SetupSpec };
 
 // 6 Signature Flagship Architectural Setups
-const FEATURED_SETUPS: SetupSpec[] = [
+export const FEATURED_SETUPS: SetupSpec[] = [
   {
     id: 'setup-1-zipline',
     name: 'ZIPLINE',
@@ -1629,9 +1614,16 @@ export const AdventureSetupView: React.FC = () => {
                 <div className="flex flex-wrap gap-3">
                   <button
                     onClick={openWhatsApp}
-                    className="inline-flex items-center gap-2 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-2xl transition-colors cursor-pointer shadow-md"
+                    className="inline-flex items-center gap-2.5 px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-2xl transition-all cursor-pointer shadow-md group"
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <div className="relative w-6 h-6 rounded-full overflow-hidden border border-white/70 shrink-0">
+                      <SafeImage
+                        src="/images/avatar/guide-avatar-climb.jpg"
+                        alt="Adventure Setup Engineer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                      <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white animate-ping" />
+                    </div>
                     <span>WhatsApp Us</span>
                   </button>
                   <a

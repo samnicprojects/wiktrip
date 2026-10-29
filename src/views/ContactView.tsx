@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { SafeImage } from '../components/SafeImage';
 import {
   Phone,
   Mail,
@@ -111,9 +112,16 @@ export const ContactView: React.FC = () => {
                 href="https://wa.me/919711720218?text=Hello%20Wiktrip%2C%20I%20would%20like%20to%20enquire%20about%20a%20trip."
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3 bg-[#25D366] hover:bg-[#1ebd5a] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                className="w-full py-3 bg-[#25D366] hover:bg-[#1ebd5a] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer shadow-md group"
               >
-                <MessageSquare className="w-4 h-4" />
+                <div className="relative w-6 h-6 rounded-full overflow-hidden border border-white/60 shrink-0">
+                  <SafeImage
+                    src="/images/avatar/guide-avatar.jpg"
+                    alt="Guide Avatar"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white animate-ping" />
+                </div>
                 <span>Enquire on WhatsApp</span>
               </a>
             </div>
