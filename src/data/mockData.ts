@@ -236,9 +236,9 @@ export const TOUR_PACKAGES_DATA: TourPackage[] = [
     originalPrice: 8500,
     rating: 4.9,
     reviewCount: 480,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/banners/hero_alpine_trek.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'
+      '/images/banners/hero_alpine_trek.jpg'
     ],
     highlights: [
       '26km Grade III+ & IV White Water Rafting through rapids like Golf Course & Roller Coaster',
@@ -715,9 +715,9 @@ export const TREK_CAMPS_DATA: TrekCamp[] = [
     price: 8999,
     rating: 4.9,
     reviewCount: 680,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/banners/hero_alpine_trek.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'
+      '/images/banners/hero_alpine_trek.jpg'
     ],
     overview: 'India’s most celebrated winter snow trek. Climb through ancient oak and pine forests blanketed in fresh powder, past the frozen Juda Ka Talab lake, up to the iconic 360-degree pyramid summit of Kedarkantha.',
     quickFacts: [
@@ -891,9 +891,9 @@ export const TREK_CAMPS_DATA: TrekCamp[] = [
     price: 36000,
     rating: 5.0,
     reviewCount: 75,
-    image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/banners/hero_alpine_trek.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80'
+      '/images/banners/hero_alpine_trek.jpg'
     ],
     overview: 'One of the Himalayas most exclusive and remote glacial trails. Ascend along the massive Zemu Glacier to the base of the colossal eastern wall of Mount Kanchenjunga (8,586m).',
     quickFacts: [
