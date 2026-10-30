@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { TOUR_PACKAGES_DATA } from '../data/mockData';
-import { formatINR } from '../utils/format';
 import { SafeImage } from '../components/SafeImage';
 import {
   MapPin,
@@ -20,7 +19,6 @@ export const ToursView: React.FC = () => {
 
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchDestination, setSearchDestination] = useState('');
-  const [maxPrice, setMaxPrice] = useState<number>(50000);
 
   const categories = [
     'All',
@@ -40,10 +38,9 @@ export const ToursView: React.FC = () => {
         !searchDestination ||
         tour.destination.toLowerCase().includes(searchDestination.toLowerCase()) ||
         tour.title.toLowerCase().includes(searchDestination.toLowerCase());
-      const matchesPrice = tour.price <= maxPrice;
-      return matchesCat && matchesDest && matchesPrice;
+      return matchesCat && matchesDest;
     });
-  }, [activeCategory, searchDestination, maxPrice]);
+  }, [activeCategory, searchDestination]);
 
   return (
     <div className="min-h-screen bg-[#F8F9F6] py-12">
@@ -91,19 +88,9 @@ export const ToursView: React.FC = () => {
             />
           </div>
 
-          <div className="flex items-center gap-4 w-full sm:w-auto">
-            <span className="text-xs font-semibold text-neutral-600 whitespace-nowrap">
-              Max Budget: ₹{formatINR(maxPrice)}
-            </span>
-            <input
-              type="range"
-              min="6000"
-              max="35000"
-              step="1000"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="w-40 sm:w-48 accent-[#556B2F] cursor-pointer"
-            />
+          <div className="flex items-center gap-2 text-xs text-neutral-500 font-medium">
+            <span className="w-2 h-2 rounded-full bg-[#25D366]" />
+            <span>Personalized Itineraries · Custom Quotes on Request</span>
           </div>
         </div>
 
@@ -173,13 +160,13 @@ export const ToursView: React.FC = () => {
 
                 <div className="pt-6 mt-6 border-t border-neutral-100 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-neutral-400 block uppercase tracking-wider">
-                      All Inclusive
+                    <span className="text-[10px] text-neutral-400 block uppercase tracking-wider font-semibold">
+                      Pricing
                     </span>
-                    <span className="font-display text-xl font-black text-[#0B0D0C]">
-                      ₹{formatINR(tour.price)}
+                    <span className="text-xs sm:text-sm font-bold text-[#556B2F] flex items-center gap-1.5 mt-0.5">
+                      <span className="w-2 h-2 rounded-full bg-[#25D366] inline-block" />
+                      <span>Custom Quote on Request</span>
                     </span>
-                    <span className="text-xs text-neutral-500"> /person</span>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -196,7 +183,7 @@ export const ToursView: React.FC = () => {
                           id: tour.id,
                           title: tour.title,
                           location: tour.destination,
-                          price: tour.price
+                          price: 0
                         })
                       }
                       className="px-4 py-2 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold rounded-lg transition-colors shadow-sm"

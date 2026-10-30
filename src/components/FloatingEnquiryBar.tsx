@@ -83,7 +83,7 @@ export const FloatingEnquiryBar: React.FC = () => {
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <span>Chat on WhatsApp</span>
+                <span>Chat to Wik</span>
               </div>
               <span className="w-2 h-2 rounded-full bg-white animate-ping" />
             </a>
@@ -117,7 +117,7 @@ export const FloatingEnquiryBar: React.FC = () => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="group relative flex items-center gap-3 bg-[#0B0D0C] hover:bg-[#161917] text-white pl-2 pr-5 py-2 rounded-full border border-white/15 shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 cursor-pointer"
-          aria-label="Chat on WhatsApp"
+          aria-label="Chat to Wik"
         >
           {/* Avatar with Blinking Live Glow Ring */}
           <div className="relative shrink-0">
@@ -141,7 +141,7 @@ export const FloatingEnquiryBar: React.FC = () => {
 
           <div className="text-left">
             <div className="text-xs font-bold text-white flex items-center gap-1.5">
-              <span>Chat on WhatsApp</span>
+              <span>Chat to Wik</span>
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
             </div>
             <div className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1">

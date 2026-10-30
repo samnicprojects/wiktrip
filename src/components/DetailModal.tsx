@@ -71,7 +71,7 @@ export const DetailModal: React.FC = () => {
         id: item.id,
         title: item.title,
         location: item.destination || item.location || 'Himalayas',
-        price: item.price ?? 0
+        price: 0
       });
     } else if (detailType === 'trek') {
       openBooking({
@@ -79,7 +79,7 @@ export const DetailModal: React.FC = () => {
         id: item.id,
         title: item.title,
         location: item.location || 'High Altitude',
-        price: item.price ?? 0
+        price: 0
       });
     } else if (detailType === 'event') {
       openBooking({
@@ -816,6 +816,8 @@ export const DetailModal: React.FC = () => {
               <div className="text-xs text-neutral-400">
                 {detailType === 'event'
                   ? 'Wiktrip Campsite Accommodation'
+                  : detailType === 'tour' || detailType === 'trek'
+                  ? 'Pricing Structure'
                   : detailType === 'hotel'
                   ? 'Estimated tariff (Quote on Enquiry)'
                   : detailType === 'rental'
@@ -825,6 +827,11 @@ export const DetailModal: React.FC = () => {
               <div className="text-xl sm:text-2xl font-black text-white">
                 {detailType === 'event' ? (
                   <span className="text-base sm:text-lg text-[#F97316]">Tent Pitching & Stays</span>
+                ) : detailType === 'tour' || detailType === 'trek' ? (
+                  <span className="text-base sm:text-lg text-[#F97316] font-bold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#25D366] inline-block animate-pulse" />
+                    <span>On Request (Custom Quote)</span>
+                  </span>
                 ) : basePrice === 0 ? (
                   'FREE / ON REQUEST'
                 ) : (

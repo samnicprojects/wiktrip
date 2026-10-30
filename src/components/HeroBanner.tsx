@@ -76,19 +76,19 @@ export const HeroBanner: React.FC = () => {
           className="w-full h-auto object-cover block"
         />
 
-        {/* Floating "Book Stay Here" Button with Guide Avatar */}
-        <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 lg:right-10 z-30">
+        {/* Desktop Only Floating "Book Stay Here" Button (hidden on mobile, inside banner on desktop) */}
+        <div className="hidden sm:block absolute sm:bottom-6 sm:right-6 lg:right-10 z-30">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               handleJumpToLandingPage();
             }}
-            className="inline-flex items-center gap-2 sm:gap-3.5 pl-1.5 sm:pl-2.5 pr-3 sm:pr-5 py-1.5 sm:py-2.5 bg-gradient-to-r from-[#F97316] via-[#EA580C] to-[#C2410C] hover:from-[#EA580C] hover:to-[#9A3412] text-white rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.45)] hover:shadow-[0_12px_35px_rgba(249,115,22,0.65)] hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-white/60 cursor-pointer group/btn backdrop-blur-md"
+            className="inline-flex items-center gap-2.5 sm:gap-3.5 pl-2 sm:pl-2.5 pr-4 sm:pr-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#F97316] via-[#EA580C] to-[#C2410C] hover:from-[#EA580C] hover:to-[#9A3412] text-white rounded-full shadow-[0_10px_30px_rgba(249,115,22,0.45)] hover:shadow-[0_12px_35px_rgba(249,115,22,0.65)] hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-white/60 cursor-pointer group/btn backdrop-blur-md"
             aria-label="Book Stay Here - Hornbill Festival Campsite"
           >
             {/* Guide Avatar with animated radar ping */}
-            <div className="relative w-8 h-8 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-white shrink-0 shadow-md bg-neutral-900">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-white shrink-0 shadow-md bg-neutral-900">
               <SafeImage
                 src="/images/avatar/guide-avatar.jpg"
                 alt="Wiktrip Adventure Guide"
@@ -114,7 +114,7 @@ export const HeroBanner: React.FC = () => {
             </div>
 
             {/* Arrow Icon */}
-            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/25 flex items-center justify-center shrink-0 group-hover/btn:translate-x-1 group-hover/btn:bg-white text-white group-hover/btn:text-[#EA580C] transition-all duration-300 shadow-sm">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/25 flex items-center justify-center shrink-0 group-hover/btn:translate-x-1 group-hover/btn:bg-white text-white group-hover/btn:text-[#EA580C] transition-all duration-300 shadow-sm">
               <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
             </div>
           </button>
@@ -129,9 +129,9 @@ export const HeroBanner: React.FC = () => {
                 prevHeroSlide();
               }}
               aria-label="Previous Banner"
-              className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-6 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#F97316] text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-6 z-20 w-7 h-7 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#F97316] text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
             </button>
             <button
               onClick={(e) => {
@@ -139,13 +139,13 @@ export const HeroBanner: React.FC = () => {
                 nextHeroSlide();
               }}
               aria-label="Next Banner"
-              className="absolute top-1/2 -translate-y-1/2 right-3 sm:right-6 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#F97316] text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-6 z-20 w-7 h-7 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#F97316] text-white backdrop-blur-md flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
             </button>
 
             {/* Dot Indicators */}
-            <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-1/2 sm:-translate-x-1/2 flex items-center gap-2 z-20">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 z-20">
               {publicBanners.map((_, idx) => (
                 <button
                   key={idx}
@@ -153,14 +153,57 @@ export const HeroBanner: React.FC = () => {
                     e.stopPropagation();
                     setCurrentSlide(idx);
                   }}
-                  className={`h-2 sm:h-2.5 rounded-full transition-all cursor-pointer ${
-                    idx === currentSlide ? 'w-6 sm:w-8 bg-[#F97316]' : 'w-2 sm:w-2.5 bg-white/60 hover:bg-white'
+                  className={`h-1.5 sm:h-2.5 rounded-full transition-all cursor-pointer ${
+                    idx === currentSlide ? 'w-5 sm:w-8 bg-[#F97316]' : 'w-1.5 sm:w-2.5 bg-white/60 hover:bg-white'
                   }`}
                 />
               ))}
             </div>
           </>
         )}
+      </div>
+
+      {/* Mobile View: Button moved into the blank space directly below the banner */}
+      <div className="block sm:hidden w-full bg-[#F8F9F6] px-4 pt-3.5 pb-2 text-[#0B0D0C]">
+        <div className="max-w-md mx-auto flex justify-center">
+          <button
+            type="button"
+            onClick={handleJumpToLandingPage}
+            className="w-full inline-flex items-center justify-between gap-3 px-3 py-2 bg-gradient-to-r from-[#F97316] via-[#EA580C] to-[#C2410C] hover:from-[#EA580C] hover:to-[#9A3412] text-white rounded-full shadow-[0_8px_20px_rgba(249,115,22,0.35)] active:scale-95 transition-all duration-300 border-2 border-white/60 cursor-pointer group/btn"
+            aria-label="Book Stay Here - Hornbill Festival Campsite"
+          >
+            {/* Guide Avatar with animated radar ping */}
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border-2 border-white shrink-0 shadow-md bg-neutral-900">
+              <SafeImage
+                src="/images/avatar/guide-avatar.jpg"
+                alt="Wiktrip Adventure Guide"
+                className="w-full h-full object-cover object-top"
+              />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#25D366] animate-ping" />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#25D366] border border-white" />
+            </div>
+
+            {/* Label Stack */}
+            <div className="flex flex-col text-left flex-1 min-w-0">
+              <div className="flex items-center gap-1.5">
+                <span className="font-display font-black text-xs uppercase tracking-wide text-white leading-tight">
+                  Book Stay Here
+                </span>
+                <span className="px-1.5 py-0.5 rounded text-[8px] font-bold bg-white/20 text-white uppercase tracking-wider">
+                  Festival Stay
+                </span>
+              </div>
+              <span className="text-[10px] text-amber-100 font-semibold leading-tight truncate">
+                Hornbill 2026 Stays · Tent Pitching
+              </span>
+            </div>
+
+            {/* Arrow Icon */}
+            <div className="w-6 h-6 rounded-full bg-white/25 flex items-center justify-center shrink-0 group-hover/btn:translate-x-1 group-hover/btn:bg-white text-white group-hover/btn:text-[#EA580C] transition-all duration-300 shadow-sm">
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </div>
+          </button>
+        </div>
       </div>
     </section>
   );

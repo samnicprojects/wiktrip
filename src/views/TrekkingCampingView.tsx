@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useApp } from '../context/AppContext';
 import { TREK_CAMPS_DATA } from '../data/mockData';
-import { formatINR } from '../utils/format';
 import { SafeImage } from '../components/SafeImage';
 import {
   Mountain,
@@ -24,7 +23,6 @@ export const TrekkingCampingView: React.FC = () => {
   const [typeFilter, setTypeFilter] = useState<string>('All');
   const [difficultyFilter, setDifficultyFilter] = useState<string>('All');
   const [searchLocation, setSearchLocation] = useState('');
-  const [maxPrice, setMaxPrice] = useState<number>(200000);
 
   const categories = ['All', 'Trek', 'Camping', 'Expedition'];
   const difficulties = ['All', 'Easy', 'Moderate', 'Challenging', 'Expert'];
@@ -38,10 +36,9 @@ export const TrekkingCampingView: React.FC = () => {
         !searchLocation ||
         item.location.toLowerCase().includes(searchLocation.toLowerCase()) ||
         item.title.toLowerCase().includes(searchLocation.toLowerCase());
-      const matchesPrice = item.price <= maxPrice;
-      return matchesType && matchesDiff && matchesLoc && matchesPrice;
+      return matchesType && matchesDiff && matchesLoc;
     });
-  }, [typeFilter, difficultyFilter, searchLocation, maxPrice]);
+  }, [typeFilter, difficultyFilter, searchLocation]);
 
   return (
     <div className="min-h-screen bg-[#F8F9F6] py-12">
@@ -112,19 +109,14 @@ export const TrekkingCampingView: React.FC = () => {
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-col justify-end">
               <label className="block text-[11px] font-bold uppercase text-neutral-400 mb-1">
-                Max Fee: ₹{formatINR(maxPrice)}
+                Pricing Notice
               </label>
-              <input
-                type="range"
-                min="3000"
-                max="15000"
-                step="500"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full accent-[#556B2F] mt-2 cursor-pointer"
-              />
+              <div className="flex items-center gap-2 text-xs text-neutral-600 font-medium py-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#25D366] shrink-0" />
+                <span>Custom quotes provided upon enquiry</span>
+              </div>
             </div>
           </div>
         </div>
@@ -194,13 +186,13 @@ export const TrekkingCampingView: React.FC = () => {
 
                 <div className="pt-6 mt-6 border-t border-neutral-100 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-neutral-400 block uppercase tracking-wider">
-                      All Inclusive Fee
+                    <span className="text-[10px] text-neutral-400 block uppercase tracking-wider font-semibold">
+                      Pricing
                     </span>
-                    <span className="font-display text-xl font-black text-[#0B0D0C]">
-                      ₹{formatINR(trek.price)}
+                    <span className="text-xs sm:text-sm font-bold text-[#556B2F] flex items-center gap-1.5 mt-0.5">
+                      <span className="w-2 h-2 rounded-full bg-[#25D366] inline-block" />
+                      <span>Custom Quote on Request</span>
                     </span>
-                    <span className="text-xs text-neutral-500"> /person</span>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -217,7 +209,7 @@ export const TrekkingCampingView: React.FC = () => {
                           id: trek.id,
                           title: trek.title,
                           location: trek.location,
-                          price: trek.price
+                          price: 0
                         })
                       }
                       className="px-4 py-2 bg-[#F97316] hover:bg-[#EA580C] text-white text-xs font-bold rounded-lg transition-colors shadow-sm"
